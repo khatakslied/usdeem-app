@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+company = Company.create!(name: "RubyIsAwesome")
+puts "Company #{company.name} was created"
+
+team = Team.new(name: "Team A")
+team.company = company
+team.save!
+puts "Team #{team.name} was created"
