@@ -4,5 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :team
-  has_many :reviews, dependent: :destroy
+  # commented out until reviews were created in seed
+  # has_many :reviews, dependent: :destroy
 end
