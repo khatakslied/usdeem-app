@@ -1,2 +1,20 @@
 <h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+
+<%= simple_form_for @review do |form| %>
+  <h2>Analysis Skills</h2>
+   <%= simple_fields_for :analysis_skills do |section| %>
+    <%= section.input :score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :subset, as: :check_boxes, collection: Review::ANALYSIS_SKILLS%>
+  <% end %>
+  <h2>Creative Thinking Skills</h2>
+   <%= simple_fields_for :creative_thinking_skills do |section| %>
+    <%= section.input :score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :subset, as: :check_boxes, collection: Review::CREATIVE_THINKING_SKILLS%>
+  <% end %>
+  <h2>Troubleshooting Skills</h2>
+   <%= simple_fields_for :troubleshooting_skills do |section| %>
+    <%= section.input :score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :subset, as: :check_boxes, collection: Review::TROUBLESHOOTING_SKILLS%>
+  <% end %>
+  <%= form.button :submit %>
+<% end %>

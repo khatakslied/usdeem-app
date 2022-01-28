@@ -8,6 +8,7 @@ class Review < ApplicationRecord
   validates :leadership, presence: true
   validates :work_ethic, presence: true
 
+  # Problem Solving Skills
   ANALYSIS_SKILLS = %w[Divergent_thinking Experimentation Observation]
   CREATIVE_THINKING_SKILLS = %w[Artistic_sense Imagination Brainstorming Design_sense Innovation Insight Mind_mapping Lateral_thinking]
   TROUBLESHOOTING_SKILLS = %w[Troubleshooting Questioning Logical_reasoning Persistence Reframing]
