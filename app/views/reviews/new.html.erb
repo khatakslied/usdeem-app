@@ -2,19 +2,15 @@
 
 <%= simple_form_for @review do |form| %>
   <h2>Analysis Skills</h2>
-   <%= simple_fields_for :analysis_skills do |section| %>
-    <%= section.input :score, as: :radio_buttons, collection: 1..5 %>
-    <%= section.input :subset, as: :check_boxes, collection: Review::ANALYSIS_SKILLS%>
-  <% end %>
+   <%= simple_fields_for :problem_solving do |section| %>
+    <%= section.input :analysis_skills_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :analysis_skills_subset, as: :check_boxes, collection: Review::ANALYSIS_SKILLS%>
   <h2>Creative Thinking Skills</h2>
-   <%= simple_fields_for :creative_thinking_skills do |section| %>
-    <%= section.input :score, as: :radio_buttons, collection: 1..5 %>
-    <%= section.input :subset, as: :check_boxes, collection: Review::CREATIVE_THINKING_SKILLS%>
-  <% end %>
+    <%= section.input :creative_thinking_skills_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :creative_thinking_skills_subset, as: :check_boxes, collection: Review::CREATIVE_THINKING_SKILLS%>
   <h2>Troubleshooting Skills</h2>
-   <%= simple_fields_for :troubleshooting_skills do |section| %>
-    <%= section.input :score, as: :radio_buttons, collection: 1..5 %>
-    <%= section.input :subset, as: :check_boxes, collection: Review::TROUBLESHOOTING_SKILLS%>
+    <%= section.input :troubleshooting_skills_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :troubleshooting_skills_subset, as: :check_boxes, collection: Review::TROUBLESHOOTING_SKILLS%>
   <% end %>
   <%= form.button :submit %>
 <% end %>
