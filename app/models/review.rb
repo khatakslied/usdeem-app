@@ -8,10 +8,16 @@ class Review < ApplicationRecord
   validates :leadership, presence: true
   validates :work_ethic, presence: true
 
+  # Teamwork Skills
+  CONFLICT_RESOLUTION_SKILLS = %w[Coordination Dealing_with_Difficult_Situations Mediation Office_Politics_Management Personality_Conflicts_Management]
+  COLLABORATIVE_SKILLS = %w[Accepting_Feedback Cooperation Idea_Exchange Influential Sales_Skills Social_Skills]
+  CULTURAL_AWARENESS = %w[Disability_Awareness Diversity_Awareness Intercultural_Competence]
+  EMPATHETIC_SKILLS = %w[Emotional_Intelligence Interpersonal_Skills Respectfulness Self-Awareness]
+
   # Problem Solving Skills
-  ANALYSIS_SKILLS = %w[Divergent_thinking Experimentation Observation]
-  CREATIVE_THINKING_SKILLS = %w[Artistic_sense Imagination Brainstorming Design_sense Innovation Insight Mind_mapping Lateral_thinking]
-  TROUBLESHOOTING_SKILLS = %w[Troubleshooting Questioning Logical_reasoning Persistence Reframing]
+  ANALYSIS_SKILLS = %w[Divergent_Thinking Experimentation Observation]
+  CREATIVE_THINKING_SKILLS = %w[Artistic_Sense Imagination Brainstorming Design_Sense Innovation Insight Mind_Mapping Lateral_Thinking]
+  TROUBLESHOOTING_SKILLS = %w[Troubleshooting Questioning Logical_Reasoning Persistence Reframing]
 end
 
 # “{

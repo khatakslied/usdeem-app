@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_083359) do
+ActiveRecord::Schema.define(version: 2022_01_30_110128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 2022_01_19_083359) do
   create_table "reviews", force: :cascade do |t|
     t.bigint "sender_id", null: false
     t.bigint "recipient_id", null: false
-    t.string "teamwork"
-    t.string "communication"
-    t.string "time_management"
-    t.string "problem_solving"
-    t.string "leadership"
-    t.string "work_ethic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipient_id"], name: "index_reviews_on_recipient_id"

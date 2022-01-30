@@ -1,14 +1,30 @@
 <h1>Reviews#new</h1>
 
 <%= simple_form_for @review do |form| %>
-  <h2>Analysis Skills</h2>
+  <h2>Teamwork Skills</h2>
+   <%= simple_fields_for :teamwork do |section| %>
+  <h3>Conflict Resolution Skills</h3>
+    <%= section.input :conflict_resolution_skills_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :conflict_resolution_skills_subset, as: :check_boxes, collection: Review::CONFLICT_RESOLUTION_SKILLS%>
+  <h3>Collaborative Skills</h3>
+    <%= section.input :collaborative_skills_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :collaborative_skills_subset, as: :check_boxes, collection: Review::COLLABORATIVE_SKILLS%>
+  <h3>Cultural Awareness</h3>
+    <%= section.input :cultural_awareness_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :cultural_awareness_subset, as: :check_boxes, collection: Review::CULTURAL_AWARENESS%>
+  <h3>Empathetic Skills</h3>
+    <%= section.input :empathetic_skills_score, as: :radio_buttons, collection: 1..5 %>
+    <%= section.input :empathetic_skills_subset, as: :check_boxes, collection: Review::EMPATHETIC_SKILLS%>
+  <% end %>
+  <h2>Problem Solving Skills</h2>
    <%= simple_fields_for :problem_solving do |section| %>
+  <h3>Analysis Skills</h3>
     <%= section.input :analysis_skills_score, as: :radio_buttons, collection: 1..5 %>
     <%= section.input :analysis_skills_subset, as: :check_boxes, collection: Review::ANALYSIS_SKILLS%>
-  <h2>Creative Thinking Skills</h2>
+  <h3>Creative Thinking Skills</h3>
     <%= section.input :creative_thinking_skills_score, as: :radio_buttons, collection: 1..5 %>
     <%= section.input :creative_thinking_skills_subset, as: :check_boxes, collection: Review::CREATIVE_THINKING_SKILLS%>
-  <h2>Troubleshooting Skills</h2>
+  <h3>Troubleshooting Skills</h3>
     <%= section.input :troubleshooting_skills_score, as: :radio_buttons, collection: 1..5 %>
     <%= section.input :troubleshooting_skills_subset, as: :check_boxes, collection: Review::TROUBLESHOOTING_SKILLS%>
   <% end %>
