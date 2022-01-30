@@ -1,14 +1,14 @@
-class ReviewsController < ApplicationController
+class ReportController < ApplicationController
   def index
-    @reviews = Review.all
+    @reports = Report.all
   end
 
   def new
-    @review = Review.new
+    @report = Report.new
   end
 
   def create
-    @review = Review.new(sender_id: current_user, problem_solving: problem_solving_params)
+    @report = Report.new(sender_id: current_user, problem_solving: problem_solving_params)
     raise
   end
 
