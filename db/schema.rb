@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_30_110551) do
+ActiveRecord::Schema.define(version: 2022_01_30_113037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2022_01_30_110551) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "key_traits", force: :cascade do |t|
+    t.string "category"
+    t.bigint "report_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["report_id"], name: "index_key_traits_on_report_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -54,6 +62,7 @@ ActiveRecord::Schema.define(version: 2022_01_30_110551) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
+  add_foreign_key "key_traits", "reports"
   add_foreign_key "reports", "users", column: "recipient_id"
   add_foreign_key "reports", "users", column: "sender_id"
   add_foreign_key "teams", "companies"
