@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :team
   # commented out until reviews were created in seed
-  # has_many :reviews, dependent: :destroy
+  # has_many :reports, dependent: :destroy <- WE SHOULD ONLY DELETE REPORTS WHERE RECIPIENT_ID = USER
 end
