@@ -8,21 +8,25 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report = Report.new(sender_id: current_user)
+    @report = Report.new(report_params)
+    @report.sender = current_user
+    # if @report.save
+    #   KeyTrait::CATEGORIES.each do |category|
+    #     @key_trait = KeyTrait.new()
+    #     if key_trait.save
+
+    #     end
+    #   end
+    #   redirect_to reports_path
+    # else
+    #   render :new
+    # end
     raise
   end
 
   private
 
-  def problem_solving_params
-    @analysis_skills = params.require(:problem_solving).permit(:analysis_skills_score, analysis_skills_subset: [])
-    @creative_thinking_skills = params.require(:problem_solving).permit(:creative_thinking_skills_score, creative_thinking_skills_subset: [])
-    @troubleshooting_skills = params.require(:problem_solving).permit(:troubleshooting_skills_score, troubleshooting_skills_subset: [])
-
-    {
-      analysis_skills: { score: @analysis_skills[:analysis_skills_score], subset: @analysis_skills[:analysis_skills_subset][1..-1] },
-      creative_thinking_skills: { score: @creative_thinking_skills[:creative_thinking_skills_score], subset: @creative_thinking_skills[:creative_thinking_skills_subset][1..-1] },
-      troubleshooting_skills: { score: @troubleshooting_skills[:troubleshooting_skills_score], subset: @troubleshooting_skills[:troubleshooting_skills_subset][1..-1] }
-    }
+  def report_params
+    params.require(:report).permit(:recipient_id)
   end
 end

@@ -1,7 +1,19 @@
 <h1>Reviews#new</h1>
 
 <%= simple_form_for @report do |form| %>
-  <h2>Teamwork Skills</h2>
-
+  <%= form.association :recipient, label_method: :first_name, value_method: :id %>
+    <% KeyTrait::CATEGORIES.each do |key_trait| %>
+      <h3><%= key_trait.titleize %></h3>
+      <%= form.simple_fields_for :key_traits, KeyTrait.new() do |key_trait_form| %>
+        <%= key_trait_form.input :category, as: :hidden, input_html: { value: key_trait } %>
+        <% SkillGroup::CATEGORIES[key_trait.parameterize.underscore.to_sym].each do |skill_group| %>
+          <%= key_trait_form.simple_fields_for :skill_groups, SkillGroup.new() do |skill_group_form| %>
+            <%= skill_group %>
+            <%= skill_group_form.input :category, as: :hidden, input_html: { value: skill_group } %>
+            <%= skill_group_form.input :score, collection: 1..5, as: :radio_buttons %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   <%= form.button :submit %>
 <% end %>
