@@ -1,5 +1,6 @@
 class KeyTrait < ApplicationRecord
   belongs_to :report
+  has_many :sub_traits
   CATEGORIES = ["teamwork", "communication", "time_management", "problem_solving", "leadership", "work_ethic"]
 
     # Teamwork Skills
