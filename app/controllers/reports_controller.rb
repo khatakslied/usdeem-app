@@ -1,4 +1,4 @@
-class ReportController < ApplicationController
+class ReportsController < ApplicationController
   def index
     @reports = Report.all
   end
@@ -8,7 +8,7 @@ class ReportController < ApplicationController
   end
 
   def create
-    @report = Report.new(sender_id: current_user, problem_solving: problem_solving_params)
+    @report = Report.new(sender_id: current_user)
     raise
   end
 
