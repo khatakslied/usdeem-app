@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SubTraitTest < ActiveSupport::TestCase
+class SkillGroupTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
