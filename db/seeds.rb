@@ -11,10 +11,10 @@ puts "Cleaning up database..."
 Company.destroy_all
 puts "Database has been reset"
 
-company = Company.create!(name: "RubyIsAwesome")
+company = Company.create!(name: "Usdeem")
 puts "Company #{company.name} was created"
 
-team = Team.new(name: "Team A")
+team = Team.new(name: "Development Team")
 team.company = company
 team.save!
 puts "Team #{team.name} was created"
@@ -22,7 +22,7 @@ puts "Team #{team.name} was created"
 user1 = User.create!(
   first_name: "Vivian",
   last_name: 'Bow',
-  email: 'vivian@lewagon.jp',
+  email: 'vivian@usdeem.jp',
   password: '123456',
   team: team
 )
@@ -31,7 +31,7 @@ puts "User #{user1.first_name} was created"
 user2 = User.create!(
   first_name: "Ryan",
   last_name: 'Johnson',
-  email: 'ryan@lewagon.jp',
+  email: 'ryan@usdeem.jp',
   password: '123456',
   team: team
 )
@@ -40,7 +40,7 @@ puts "User #{user2.first_name} was created"
 user3 = User.create!(
   first_name: "Matias",
   last_name: 'Acuna',
-  email: 'matias@lewagon.jp',
+  email: 'matias@usdeem.jp',
   password: '123456',
   team: team
 )
@@ -49,7 +49,7 @@ puts "User #{user3.first_name} was created"
 user4 = User.create!(
   first_name: "Konstantin",
   last_name: 'Yatsenko',
-  email: 'konstantin@lewagon.jp',
+  email: 'konstantin@usdeem.jp',
   password: '123456',
   team: team
 )

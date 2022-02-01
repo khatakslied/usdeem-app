@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_083359) do
+ActiveRecord::Schema.define(version: 2022_01_31_081556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,19 +21,38 @@ ActiveRecord::Schema.define(version: 2022_01_19_083359) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "recipient_id", null: false
-    t.string "teamwork"
-    t.string "communication"
-    t.string "time_management"
-    t.string "problem_solving"
-    t.string "leadership"
-    t.string "work_ethic"
+  create_table "key_traits", force: :cascade do |t|
+    t.string "category"
+    t.bigint "report_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipient_id"], name: "index_reviews_on_recipient_id"
-    t.index ["sender_id"], name: "index_reviews_on_sender_id"
+    t.index ["report_id"], name: "index_key_traits_on_report_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_reports_on_recipient_id"
+    t.index ["sender_id"], name: "index_reports_on_sender_id"
+  end
+
+  create_table "skill_groups", force: :cascade do |t|
+    t.integer "score"
+    t.string "category"
+    t.bigint "key_trait_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["key_trait_id"], name: "index_skill_groups_on_key_trait_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.bigint "skill_group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["skill_group_id"], name: "index_skills_on_skill_group_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -60,8 +79,11 @@ ActiveRecord::Schema.define(version: 2022_01_19_083359) do
     t.index ["team_id"], name: "index_users_on_team_id"
   end
 
-  add_foreign_key "reviews", "users", column: "recipient_id"
-  add_foreign_key "reviews", "users", column: "sender_id"
+  add_foreign_key "key_traits", "reports"
+  add_foreign_key "reports", "users", column: "recipient_id"
+  add_foreign_key "reports", "users", column: "sender_id"
+  add_foreign_key "skill_groups", "key_traits"
+  add_foreign_key "skills", "skill_groups"
   add_foreign_key "teams", "companies"
   add_foreign_key "users", "teams"
 end
