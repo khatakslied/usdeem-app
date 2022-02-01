@@ -4,7 +4,7 @@ Please include a summary of the change and which issue is fixed/ which new featu
 
 ...
 
-## Type of change
+# Type of change
 
 Please mark 'X' as appropriate:
 
@@ -14,6 +14,6 @@ Please mark 'X' as appropriate:
 
 # How Has This Been Tested?
 
-Please describe the tests that you ran to verify your changes. Provide instructions so we can reproduce. Please also list any relevant details for your test configuration.
+Please describe the tests that you ran to verify your changes. Please also list any relevant details for your test configuration:
 
 ...
