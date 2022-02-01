@@ -11,10 +11,10 @@ puts "Cleaning up database..."
 Company.destroy_all
 puts "Database has been reset"
 
-company = Company.create!(name: "RubyIsAwesome")
+company = Company.create!(name: "Usdeem")
 puts "Company #{company.name} was created"
 
-team = Team.new(name: "Team A")
+team = Team.new(name: "Development Team")
 team.company = company
 team.save!
 puts "Team #{team.name} was created"
