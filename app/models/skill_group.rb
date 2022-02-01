@@ -7,7 +7,7 @@ class SkillGroup < ApplicationRecord
     problem_solving: ["Analysis Skills", "Creative Thinking Skills", "Troubleshooting Skills"],
     leadership: ["Team Management Skills", "Project Management Skills", "Interpersonal Skills"],
     work_ethic: ["Adaptability", "Diligence", "Discipline", "Responsibility"],
-    communication: ["General Communcation Skills", "Negotiation Skills", "Diplomatic Skills"],
-    time_management: ["Planning Skills", "Prioritisation", "Performance"]
+    communication: ["General Communication Skills", "Negotiation Skills", "Diplomatic Skills"],
+    time_management: ["Planning Skills", "Prioritisation Skills", "Long Term Performance"]
   }
 end

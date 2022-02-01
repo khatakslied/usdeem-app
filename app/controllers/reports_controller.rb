@@ -10,23 +10,18 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     @report.sender = current_user
-    # if @report.save
-    #   KeyTrait::CATEGORIES.each do |category|
-    #     @key_trait = KeyTrait.new()
-    #     if key_trait.save
-
-    #     end
-    #   end
-    #   redirect_to reports_path
-    # else
-    #   render :new
-    # end
-    raise
+    if @report.save
+      raise
+      redirect_to reports_path
+    else
+      render :new
+    end
   end
 
   private
 
   def report_params
-    params.require(:report).permit(:recipient_id)
+    params.require(:report).permit(:recipient_id, key_traits_attributes: [:category, skill_groups_attributes: [:category, :score, skills_attributes: [:name]]]
+    )
   end
 end
