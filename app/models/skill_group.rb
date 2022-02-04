@@ -5,6 +5,7 @@ class SkillGroup < ApplicationRecord
   validates :score, presence: true
   validates :score, inclusion: { in: 1..5 }
   validates :category, presence: true
+  validates :category, inclusion: { in: CATEGORIES }
   CATEGORIES = {
     teamwork: ["Conflict Resolution Skills", "Collaborative Skills", "Cultural Awareness", "Empathetic Skills"],
     problem_solving: ["Analysis Skills", "Creative Thinking Skills", "Troubleshooting Skills"],

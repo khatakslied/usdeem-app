@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe SkillGroup, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
 
   it 'checks if the initialize method accepts score on creation' do
     test_skill_group = SkillGroup.new(score: 3)
@@ -25,11 +24,16 @@ RSpec.describe SkillGroup, type: :model do
     it { should validate_presence_of(:category) }
   end
 
+  # We should test that category value in the CATEGORIES hash on the skill_group.rb model.git
+  # context 'checks if category is contained in list' do
+  #   it { should validate_inclusion_of(:category).in_array(CATEGORIES) }
+  # end
+
   context 'checks if it belongs to key_trait' do
     it { should belong_to(:key_trait) }
   end
 
-  context 'checks if it has many :skills' do
+  context 'checks if it has many skills' do
     it { should have_many(:skills) }
   end
 
