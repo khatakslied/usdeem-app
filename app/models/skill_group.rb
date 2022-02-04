@@ -2,6 +2,9 @@ class SkillGroup < ApplicationRecord
   belongs_to :key_trait
   has_many :skills
   accepts_nested_attributes_for :skills
+  validates :score, presence: true
+  validates :score, inclusion: { in: 1..5 }
+  validates :category, presence: true
   CATEGORIES = {
     teamwork: ["Conflict Resolution Skills", "Collaborative Skills", "Cultural Awareness", "Empathetic Skills"],
     problem_solving: ["Analysis Skills", "Creative Thinking Skills", "Troubleshooting Skills"],
