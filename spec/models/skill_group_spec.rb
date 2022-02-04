@@ -12,6 +12,10 @@ RSpec.describe SkillGroup, type: :model do
     it { should belong_to(:key_trait) }
   end
 
+  context 'checks if it has many :skills' do
+    it { should have_many(:skills) }
+  end
+
 end
 
 # it 'checks if the initialize method has :score on creation' do
