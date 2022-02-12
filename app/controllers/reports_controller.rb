@@ -5,6 +5,10 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
+    require "json"
+    filepath = "public/data_hash.json"
+    serialized_data = File.read(filepath)
+    @skills_data = JSON.parse(serialized_data)
   end
 
   def create
