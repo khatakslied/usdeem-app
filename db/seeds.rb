@@ -68,25 +68,44 @@ report1 = Report.create!(
   sender: user2,
   recipient: user1
 )
-puts "Report of #{report1.year}.#{report1.month} was created"
 
-skills_data.each do |key_trait, skill_groups|
-  key_trait_name = KeyTrait.create!(
-    category: key_trait,
-    report: report1
-  )
-  skill_groups.each do |skill_group, question_skills_data|
-    skill_group_name = SkillGroup.create!(
-      score: rand(1..5),
-      category: skill_group,
-      key_trait: key_trait_name
+report2 = Report.create!(
+  year: 2021,
+  month: 12,
+  sender: user2,
+  recipient: user1
+)
+
+report3 = Report.create!(
+  year: 2022,
+  month: 1,
+  sender: user2,
+  recipient: user1
+)
+
+reports=[report1, report2, report3]
+
+reports.each do |report|
+  skills_data.each do |key_trait, skill_groups|
+    key_trait_name = KeyTrait.create!(
+      category: key_trait,
+      report: report
     )
-    question_skills_data['traits'].each do |skill|
-      Skill.create!(
-        name: skill,
-        skill_group: skill_group_name,
-        improve: [true, false][rand(2)]
+    skill_groups.each do |skill_group, question_skills_data|
+      skill_group_name = SkillGroup.create!(
+        score: rand(1..5),
+        category: skill_group,
+        key_trait: key_trait_name
       )
+      question_skills_data['traits'].each do |skill|
+        Skill.create!(
+          name: skill,
+          skill_group: skill_group_name,
+          improve: [true, false][rand(2)]
+        )
+      end
     end
   end
 end
+
+puts "#{reports.length} reports were created"
