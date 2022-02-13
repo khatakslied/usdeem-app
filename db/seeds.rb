@@ -8,6 +8,7 @@
 
 puts "Cleaning up database..."
 # once company is destroyed, the teams, users, and reviews will be destroyed accordingly
+Report.destroy_all
 Company.destroy_all
 puts "Database has been reset"
 
@@ -54,3 +55,5 @@ user4 = User.create!(
   team: team
 )
 puts "User #{user4.first_name} was created"
+
+# past report
