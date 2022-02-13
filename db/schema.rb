@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_13_030437) do
+ActiveRecord::Schema.define(version: 2022_02_13_174730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 2022_02_13_030437) do
     t.bigint "recipient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "year"
-    t.integer "month"
     t.index ["recipient_id"], name: "index_reports_on_recipient_id"
     t.index ["sender_id"], name: "index_reports_on_sender_id"
   end
