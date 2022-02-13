@@ -57,3 +57,36 @@ user4 = User.create!(
 puts "User #{user4.first_name} was created"
 
 # past report
+require 'json'
+serialized_data = File.read("public/data_hash.json")
+skills_data=JSON.parse(serialized_data)
+
+
+report1 = Report.create!(
+  year: 2021,
+  month: 11,
+  sender: user2,
+  recipient: user1
+)
+puts "Report of #{report1.year}.#{report1.month} was created"
+
+skills_data.each do |key_trait, skill_groups|
+  key_trait_name = KeyTrait.create!(
+    category: key_trait,
+    report: report1
+  )
+  skill_groups.each do |skill_group, question_skills_data|
+    skill_group_name = SkillGroup.create!(
+      score: rand(1..5),
+      category: skill_group,
+      key_trait: key_trait_name
+    )
+    question_skills_data['traits'].each do |skill|
+      Skill.create!(
+        name: skill,
+        skill_group: skill_group_name,
+        improve: [true, false][rand(2)]
+      )
+    end
+  end
+end
