@@ -56,34 +56,24 @@ user4 = User.create!(
 )
 puts "User #{user4.first_name} was created"
 
-# past report
+# Past Reports
 require 'json'
 serialized_data = File.read("public/data_hash.json")
 skills_data=JSON.parse(serialized_data)
 
-
-report1 = Report.create!(
-  year: 2021,
-  month: 11,
-  sender: user2,
-  recipient: user1
-)
-
-report2 = Report.create!(
-  year: 2021,
-  month: 12,
-  sender: user2,
-  recipient: user1
-)
-
-report3 = Report.create!(
-  year: 2022,
-  month: 1,
-  sender: user2,
-  recipient: user1
-)
-
-reports=[report1, report2, report3]
+# 6 months worth of past reports (recipient: Vivian)
+senders = [user2, user3, user4]
+reports = []
+senders.each do |sender|
+  6.times do |n|
+    report = Report.create!(
+      created_at: Date.today - n.month,
+      sender: sender,
+      recipient: user1
+    )
+    reports << report
+  end
+end
 
 reports.each do |report|
   skills_data.each do |key_trait, skill_groups|
