@@ -59,7 +59,7 @@ puts "User #{user4.first_name} was created"
 # Past Reports
 require 'json'
 serialized_data = File.read("public/data_hash.json")
-skills_data=JSON.parse(serialized_data)
+report_data=JSON.parse(serialized_data)
 
 # 6 months worth of past reports (recipient: Vivian)
 senders = [user2, user3, user4]
@@ -76,18 +76,18 @@ senders.each do |sender|
 end
 
 reports.each do |report|
-  skills_data.each do |key_trait, skill_groups|
+  report_data.each do |key_trait, skill_groups|
     key_trait_name = KeyTrait.create!(
       category: key_trait,
       report: report
     )
-    skill_groups.each do |skill_group, question_skills_data|
+    skill_groups.each do |skill_group, skills_and_question|
       skill_group_name = SkillGroup.create!(
         score: rand(1..5),
         category: skill_group,
         key_trait: key_trait_name
       )
-      question_skills_data['traits'].each do |skill|
+      skills_and_question['skills'].each do |skill|
         Skill.create!(
           name: skill,
           skill_group: skill_group_name,
