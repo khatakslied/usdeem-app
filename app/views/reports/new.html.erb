@@ -2,19 +2,19 @@
 
 <%= simple_form_for @report do |form| %>
   <%= form.association :recipient, label_method: :first_name, value_method: :id %>
-    <% @skills_data.each do |key_trait, skill_groups| %>
+    <% @report_data.each do |key_trait, skill_groups| %>
       <h2><%= key_trait %></h2>
       <%= form.simple_fields_for :key_traits, KeyTrait.new() do |key_trait_form| %>
         <%= key_trait_form.input :category, as: :hidden, input_html: { value: key_trait } %>
-        <% skill_groups.each do |skill_group, question_skills_data|%>
+        <% skill_groups.each do |skill_group, skills_and_question|%>
           <%= key_trait_form.simple_fields_for :skill_groups, SkillGroup.new() do |skill_group_form| %>
           <h4><%= skill_group %></h4>
             <%= skill_group_form.input :category, as: :hidden, input_html: { value: skill_group } %>
             <%# scoring part  %>
             <%= skill_group_form.input :score,
                                       collection: 1..5, as: :radio_buttons,
-                                      label: question_skills_data['question'] %>
-            <% question_skills_data['traits'].each do |skill| %>
+                                      label: skills_and_question['question'] %>
+            <% skills_and_question['skills'].each do |skill| %>
               <%# multiple choices part  %>
               <%= skill_group_form.simple_fields_for :skills, Skill.new() do |skill_form| %>
                 <%= skill_form.input :name, as: :hidden, input_html: { value: skill } %>

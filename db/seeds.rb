@@ -8,6 +8,7 @@
 
 puts "Cleaning up database..."
 # once company is destroyed, the teams, users, and reviews will be destroyed accordingly
+Report.destroy_all
 Company.destroy_all
 puts "Database has been reset"
 
@@ -54,3 +55,47 @@ user4 = User.create!(
   team: team
 )
 puts "User #{user4.first_name} was created"
+
+# Past Reports
+require 'json'
+serialized_data = File.read("public/data_hash.json")
+report_data=JSON.parse(serialized_data)
+
+# 6 months worth of past reports (recipient: Vivian)
+senders = [user2, user3, user4]
+reports = []
+senders.each do |sender|
+  6.times do |n|
+    report = Report.create!(
+      created_at: Date.today - n.month,
+      sender: sender,
+      recipient: user1
+    )
+    reports << report
+  end
+end
+
+reports.each do |report|
+  report_data.each do |key_trait, skill_groups|
+    key_trait_name = KeyTrait.create!(
+      category: key_trait,
+      report: report
+    )
+    skill_groups.each do |skill_group, skills_and_question|
+      skill_group_name = SkillGroup.create!(
+        score: rand(1..5),
+        category: skill_group,
+        key_trait: key_trait_name
+      )
+      skills_and_question['skills'].each do |skill|
+        Skill.create!(
+          name: skill,
+          skill_group: skill_group_name,
+          improve: [true, false][rand(2)]
+        )
+      end
+    end
+  end
+end
+
+puts "#{reports.length} reports were created"

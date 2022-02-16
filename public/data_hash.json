@@ -2,7 +2,7 @@
   "Problem Solving": {
     "Analysis Skills": {
       "question": "How well can he/she analyze a problem or situation given?",
-      "traits": [
+      "skills": [
         "Analysis",
         "Divergent Thinking",
         "Experimenting",
@@ -11,7 +11,7 @@
     },
     "Creativity Skills": {
       "question": "How easy is it for someone to create new solutions or angles to solve a problem?",
-      "traits": [
+      "skills": [
         "Artistic Sense",
         "Imagination",
         "Brainstorming",
@@ -26,7 +26,7 @@
     },
     "Troubleshooting Skills": {
       "question": "How well does he/she go about solving a given problem?",
-      "traits": [
+      "skills": [
         "Troubleshooting",
         "Questioning",
         "Logical Reasoning",
@@ -38,7 +38,7 @@
   "Leadership": {
     "Team Management Skills": {
       "question": "How well can he/she manage a group or team of people to be productive?",
-      "traits": [
+      "skills": [
         "People Management",
         "Remote Team Management",
         "Talent Management",
@@ -55,7 +55,7 @@
     },
     "Project Management Skills": {
       "question": "How well can he/she move a project along to completion?",
-      "traits": [
+      "skills": [
         "Project Management",
         "Meeting Management",
         "Agility",
@@ -66,7 +66,7 @@
     },
     "Interpersonal Skills": {
       "question": "How well can he/she connect and inspire others?",
-      "traits": [
+      "skills": [
         "Encouraging",
         "Generosity",
         "Humility",
@@ -82,7 +82,7 @@
   "Work Ethic": {
     "Adaptability": {
       "question": "How well does he/she respond to changing circumstances/external pressures?",
-      "traits": [
+      "skills": [
         "Initiative",
         "Motivated",
         "Open-Minded",
@@ -94,7 +94,7 @@
     },
     "Diligence": {
       "question": "How well does he/she contribute to improving products/services?",
-      "traits": [
+      "skills": [
         "Attentive",
         "Competitiveness",
         "Curiosity",
@@ -105,7 +105,7 @@
     },
     "Discipline": {
       "question": "How well does he/she follow the expected code of behaviour?",
-      "traits": [
+      "skills": [
         "Calm",
         "Commitment",
         "Emotion Management",
@@ -117,7 +117,7 @@
     },
     "Responsibility": {
       "question": "How well does he/she take action in response to a request or problem?",
-      "traits": [
+      "skills": [
         "Dependability",
         "Integrity",
         "Reliable"
@@ -127,7 +127,7 @@
   "Teamwork": {
     "Conflict Resolution Skills": {
       "question": "On which level do you think ___ is able to resolve conflicts?",
-      "traits": [
+      "skills": [
         "Coordination",
         "Deal with Difficult Situations",
         "Mediation",
@@ -137,7 +137,7 @@
     },
     "Collaborative Skills": {
       "question": "On which level do you think ___ is able to collaborate with others?",
-      "traits": [
+      "skills": [
         "Accept Feedback",
         "Collaborative",
         "Cooperation",
@@ -149,7 +149,7 @@
     },
     "Cultural Awareness": {
       "question": "On which level do you think ___ is able to recognize and appreciate cultural differences?",
-      "traits": [
+      "skills": [
         "Disability Awareness",
         "Diversity Awareness",
         "Intercultural Competence"
@@ -157,7 +157,7 @@
     },
     "Empathetic Skills": {
       "question": "On which level do you think ___ is able to be understand other’s emotions and give appropriate response?",
-      "traits": [
+      "skills": [
         "Emotional Intelligence",
         "Interpersonal Relationships Skills",
         "Respectfulness",
@@ -168,7 +168,7 @@
   "Communication": {
     "General Communication Skills": {
       "question": "How well does he /she communicate with others?",
-      "traits": [
+      "skills": [
         "Verbal Communication",
         "Non-verbal Communication",
         "Visual Communication",
@@ -181,7 +181,7 @@
     },
     "Negotiation Skills": {
       "question": "How well does he /she negotiate with clients and other individuals?",
-      "traits": [
+      "skills": [
         "Negotiation",
         "Personal Branding",
         "Persuasion",
@@ -192,7 +192,7 @@
     },
     "Diplomatic Skills": {
       "question": "How well is his / her relationship with other people?",
-      "traits": [
+      "skills": [
         "Diplomacy",
         "Empathy",
         "Friendliness",
@@ -208,7 +208,7 @@
   "Time Management": {
     "Planning Skills": {
       "question": "On which level do you think ___ is able to plan and manage tasks?",
-      "traits": [
+      "skills": [
         "Allocating Resources",
         "Goal-Setting",
         "Organization",
@@ -221,7 +221,7 @@
     },
     "Prioritisation Skills": {
       "question": "On which level do you think ___ is able to prioritize tasks?",
-      "traits": [
+      "skills": [
         "Prioritization",
         "Sense of Urgency",
         "Streamlining"
@@ -229,7 +229,7 @@
     },
     "Long Term Performance": {
       "question": "On which level do you think ___ is able to perform tasks with accuracy and in a timely manner?",
-      "traits": [
+      "skills": [
         "Acuity",
         "Coping",
         "Focus",

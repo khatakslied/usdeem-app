@@ -1,6 +1,6 @@
 class SkillGroup < ApplicationRecord
   belongs_to :key_trait
-  has_many :skills
+  has_many :skills, dependent: :destroy
   accepts_nested_attributes_for :skills
   validates :score, presence: true
   validates :score, inclusion: { in: 1..5 }
