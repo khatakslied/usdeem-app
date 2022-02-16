@@ -2,17 +2,24 @@
 
 <%= simple_form_for @report do |form| %>
   <%= form.association :recipient, label_method: :first_name, value_method: :id %>
-    <% KeyTrait::CATEGORIES.each do |key_trait| %>
-      <h2><%= key_trait.titleize %></h2>
+    <% @skills_data.each do |key_trait, skill_groups| %>
+      <h2><%= key_trait %></h2>
       <%= form.simple_fields_for :key_traits, KeyTrait.new() do |key_trait_form| %>
         <%= key_trait_form.input :category, as: :hidden, input_html: { value: key_trait } %>
-        <% SkillGroup::CATEGORIES[key_trait.parameterize.underscore.to_sym].each do |skill_group| %>
+        <% skill_groups.each do |skill_group, question_skills_data|%>
           <%= key_trait_form.simple_fields_for :skill_groups, SkillGroup.new() do |skill_group_form| %>
-            <h3><%= skill_group %></h3>
+          <h4><%= skill_group %></h4>
             <%= skill_group_form.input :category, as: :hidden, input_html: { value: skill_group } %>
-            <%= skill_group_form.input :score, collection: 1..5, as: :radio_buttons %>
-            <%= skill_group_form.simple_fields_for :skills, Skill.new() do |skill_form| %>
-              <%= skill_form.input :name, collection: Skill::CATEGORIES[skill_group.parameterize.underscore.to_sym] %>
+            <%# scoring part  %>
+            <%= skill_group_form.input :score,
+                                      collection: 1..5, as: :radio_buttons,
+                                      label: question_skills_data['question'] %>
+            <% question_skills_data['traits'].each do |skill| %>
+              <%# multiple choices part  %>
+              <%= skill_group_form.simple_fields_for :skills, Skill.new() do |skill_form| %>
+                <%= skill_form.input :name, as: :hidden, input_html: { value: skill } %>
+                <%= skill_form.input :improve, as: :boolean, label: skill %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>

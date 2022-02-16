@@ -1,0 +1,245 @@
+{
+  "Problem Solving": {
+    "Analysis Skills": {
+      "question": "How well can he/she analyze a problem or situation given?",
+      "traits": [
+        "Analysis",
+        "Divergent Thinking",
+        "Experimenting",
+        "Observation"
+      ]
+    },
+    "Creativity Skills": {
+      "question": "How easy is it for someone to create new solutions or angles to solve a problem?",
+      "traits": [
+        "Artistic Sense",
+        "Imagination",
+        "Brainstorming",
+        "Design",
+        "Design Sense",
+        "Innovation",
+        "Insight",
+        "Inspiration",
+        "Mind Mapping",
+        "Lateral Thinking"
+      ]
+    },
+    "Troubleshooting Skills": {
+      "question": "How well does he/she go about solving a given problem?",
+      "traits": [
+        "Troubleshooting",
+        "Questioning",
+        "Logical Reasoning",
+        "Persistence",
+        "Reframing"
+      ]
+    }
+  },
+  "Leadership": {
+    "Team Management Skills": {
+      "question": "How well can he/she manage a group or team of people to be productive?",
+      "traits": [
+        "People Management",
+        "Remote Team Management",
+        "Talent Management",
+        "Virtual Team Management",
+        "Team-Building",
+        "Coaching",
+        "Supervising",
+        "Delegation",
+        "Mentoring",
+        "Facilitating",
+        "Cultural Intelligence",
+        "Conflict or Dispute Resolution"
+      ]
+    },
+    "Project Management Skills": {
+      "question": "How well can he/she move a project along to completion?",
+      "traits": [
+        "Project Management",
+        "Meeting Management",
+        "Agility",
+        "Deal-Making",
+        "Decision-Making",
+        "Strategic Planning"
+      ]
+    },
+    "Interpersonal Skills": {
+      "question": "How well can he/she connect and inspire others?",
+      "traits": [
+        "Encouraging",
+        "Generosity",
+        "Humility",
+        "Inspiring",
+        "Selflessness",
+        "Authenticity",
+        "Versatility",
+        "Give Clear Feedback",
+        "Managing Difficult Conversations"
+      ]
+    }
+  },
+  "Work Ethic": {
+    "Adaptability": {
+      "question": "How well does he/she respond to changing circumstances/external pressures?",
+      "traits": [
+        "Initiative",
+        "Motivated",
+        "Open-Minded",
+        "Optimistic",
+        "Taking Criticism",
+        "Tolerance of Change and Uncertainty",
+        "Trainable"
+      ]
+    },
+    "Diligence": {
+      "question": "How well does he/she contribute to improving products/services?",
+      "traits": [
+        "Attentive",
+        "Competitiveness",
+        "Curiosity",
+        "Highly Organized",
+        "Perseverant",
+        "Results-Oriented"
+      ]
+    },
+    "Discipline": {
+      "question": "How well does he/she follow the expected code of behaviour?",
+      "traits": [
+        "Calm",
+        "Commitment",
+        "Emotion Management",
+        "Independence",
+        "Professional",
+        "Punctual",
+        "Resilient"
+      ]
+    },
+    "Responsibility": {
+      "question": "How well does he/she take action in response to a request or problem?",
+      "traits": [
+        "Dependability",
+        "Integrity",
+        "Reliable"
+      ]
+    }
+  },
+  "Teamwork": {
+    "Conflict Resolution Skills": {
+      "question": "On which level do you think ___ is able to resolve conflicts?",
+      "traits": [
+        "Coordination",
+        "Deal with Difficult Situations",
+        "Mediation",
+        "Office Politics Management",
+        "Personality Conflicts Management"
+      ]
+    },
+    "Collaborative Skills": {
+      "question": "On which level do you think ___ is able to collaborate with others?",
+      "traits": [
+        "Accept Feedback",
+        "Collaborative",
+        "Cooperation",
+        "Idea Exchange",
+        "Influential",
+        "Sales Skills",
+        "Social Skills"
+      ]
+    },
+    "Cultural Awareness": {
+      "question": "On which level do you think ___ is able to recognize and appreciate cultural differences?",
+      "traits": [
+        "Disability Awareness",
+        "Diversity Awareness",
+        "Intercultural Competence"
+      ]
+    },
+    "Empathetic Skills": {
+      "question": "On which level do you think ___ is able to be understand other’s emotions and give appropriate response?",
+      "traits": [
+        "Emotional Intelligence",
+        "Interpersonal Relationships Skills",
+        "Respectfulness",
+        "Self-Awareness"
+      ]
+    }
+  },
+  "Communication": {
+    "General Communication Skills": {
+      "question": "How well does he /she communicate with others?",
+      "traits": [
+        "Verbal Communication",
+        "Non-verbal Communication",
+        "Visual Communication",
+        "Written Communication",
+        "Active Listening",
+        "Clarity",
+        "Confidence",
+        "Interviewing"
+      ]
+    },
+    "Negotiation Skills": {
+      "question": "How well does he /she negotiate with clients and other individuals?",
+      "traits": [
+        "Negotiation",
+        "Personal Branding",
+        "Persuasion",
+        "Presentation Skills",
+        "Public Speaking",
+        "Story Telling"
+      ]
+    },
+    "Diplomatic Skills": {
+      "question": "How well is his / her relationship with other people?",
+      "traits": [
+        "Diplomacy",
+        "Empathy",
+        "Friendliness",
+        "Humor",
+        "Networking",
+        "Patience",
+        "Positive Reinforcement",
+        "Sensitivity",
+        "Tolerance"
+      ]
+    }
+  },
+  "Time Management": {
+    "Planning Skills": {
+      "question": "On which level do you think ___ is able to plan and manage tasks?",
+      "traits": [
+        "Allocating Resources",
+        "Goal-Setting",
+        "Organization",
+        "Personal Time Management",
+        "Planning",
+        "Scheduling",
+        "Task Planning",
+        "Time Awareness"
+      ]
+    },
+    "Prioritisation Skills": {
+      "question": "On which level do you think ___ is able to prioritize tasks?",
+      "traits": [
+        "Prioritization",
+        "Sense of Urgency",
+        "Streamlining"
+      ]
+    },
+    "Long Term Performance": {
+      "question": "On which level do you think ___ is able to perform tasks with accuracy and in a timely manner?",
+      "traits": [
+        "Acuity",
+        "Coping",
+        "Focus",
+        "Introspection",
+        "Memory",
+        "Recall",
+        "Stress Management",
+        "Task Tracking",
+        "Work-Life Balance"
+      ]
+    }
+  }
+}
