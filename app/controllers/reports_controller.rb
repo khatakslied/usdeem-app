@@ -5,11 +5,11 @@ class ReportsController < ApplicationController
 
   def new
     @report = Report.new
-    @skills_data = data_parse
+    @report_data = data_parse
   end
 
   def create
-    @skills_data = data_parse
+    @report_data = data_parse
     @report = Report.new(report_params)
     @report.sender = current_user
     if @report.save

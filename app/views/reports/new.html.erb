@@ -2,7 +2,7 @@
 
 <%= simple_form_for @report do |form| %>
   <%= form.association :recipient, label_method: :first_name, value_method: :id %>
-    <% @skills_data.each do |key_trait, skill_groups| %>
+    <% @report_data.each do |key_trait, skill_groups| %>
       <h2><%= key_trait %></h2>
       <%= form.simple_fields_for :key_traits, KeyTrait.new() do |key_trait_form| %>
         <%= key_trait_form.input :category, as: :hidden, input_html: { value: key_trait } %>
