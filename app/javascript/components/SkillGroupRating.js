@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function SkillRating() {
+export default function SkillGroupRating() {
   return (
     <div>
       <h3>Skill_group</h3>

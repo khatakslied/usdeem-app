@@ -1,5 +1,5 @@
 import React from "react"
-import SkillGroupScore from "./SkillGroupScore"
+import KeyTraitScore from "./KeyTraitScore"
 import ProfileMessage from "./ProfileMessage"
 
 export default function Dashboard(props) {
@@ -16,7 +16,7 @@ export default function Dashboard(props) {
         </div>
         <div className="dashboard-column">
           <p>Right</p>
-          <SkillGroupScore latest_reports={props.latest_reports} key_trait={keyTrait}/>
+          <KeyTraitScore latest_reports={props.latest_reports} key_trait={keyTrait}/>
         </div>
       </div>
     </div>
