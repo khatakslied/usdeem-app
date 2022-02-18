@@ -8,7 +8,6 @@ export default function SkillGroupRating(props) {
       <p className="rating-skills-item" key={Math.random()}>{skill.name}</p>
     )
   })
-  console.log(props.skills)
   return (
     <div>
       <div className="rating-title-container">

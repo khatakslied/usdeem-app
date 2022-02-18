@@ -10,7 +10,15 @@ import ProfileMessage from "./ProfileMessage"
 
 export default function Dashboard(props) {
   const [keyTrait, setKeyTrait] = React.useState('Problem Solving')
+  const [reportData, setReportData] = React.useState([])
+  React.useEffect(()=> {
+    const data = fetch("/reports.json")
+      .then(response => response.json())
+        .then(data => setReportData(data))
+        .catch(err => console.log(err))
+  }, [])
 
+  console.log(reportData)
 
   return(
     <div>

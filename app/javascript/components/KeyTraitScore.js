@@ -16,10 +16,10 @@ export default function KeyTraitScore(props) {
   // skill_groups of target key_trait
   const skillGroupArray = keyTraitsArray.map(key_trait => key_trait.skill_groups).flat()
 
-  // reference report
+  // reference skill_groups
   const referenceSkillGroup = keyTraitsArray[0].skill_groups
 
-  // calculate each score for each skill_group
+  // calculate score for each skill_group
   const scoreArray = referenceSkillGroup.map(skill_group => {
     let num = skillGroupArray.length
     let sum = 0
@@ -32,7 +32,7 @@ export default function KeyTraitScore(props) {
     return (sum / report_num).toFixed(2)
   })
 
-  //skills
+  // skills for each skill_group
   const skillsArray = referenceSkillGroup.map(skill_group => {
     let skills = []
     let num = skillGroupArray.length
@@ -44,8 +44,7 @@ export default function KeyTraitScore(props) {
     return [...new Set(skills.flat())] // unique skills
   })
 
-  console.log(skillsArray)
-  // create each skill_group_rating component
+  // create skill_group_rating components
   const skillGroupRatings = scoreArray.map((score, index) => {
     return (
       <SkillGroupRating key={Math.random()} score={score} name={referenceSkillGroup[index].category} skills={skillsArray[index]}/>
