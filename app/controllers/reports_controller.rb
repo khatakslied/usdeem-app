@@ -1,6 +1,8 @@
 class ReportsController < ApplicationController
   def index
-    @reports = Report.all
+    @reports = [Report.all]
+    @last_month_reports = [Report.where(recipient: current_user,
+                                        created_at: Date.today.beginning_of_month..Date.today.end_of_month)]
   end
 
   def new
