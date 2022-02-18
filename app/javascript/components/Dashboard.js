@@ -14,7 +14,6 @@ export default function Dashboard(props) {
 
   return(
     <div>
-      <h1>This is dashboard component</h1>
       {/* <FontAwesomeIcon icon={faCoffee} /> */}
       <ProfileMessage user={props.user}/>
       <div className="dashboard-container">
