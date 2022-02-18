@@ -1,0 +1,23 @@
+.keytrait-score-container{
+  margin: 10px;
+}
+.rating-title-container{
+  display:flex;
+  align-items: baseline;
+  p{
+    margin-left: 5px;
+  }
+}
+
+.rating-skills-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 10px;
+  text-align: center;
+
+  .rating-skills-item{
+    padding: 5px;
+    background-color: lightgray;
+    font-size: 12px;
+  }
+}
