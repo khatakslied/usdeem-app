@@ -33,6 +33,12 @@ export const data = {
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',
     },
+    {
+      label: 'Work Ethic',
+      data: labels.map(() => Math.floor(Math.random() * 5)),
+      borderColor: 'rgb(44, 22, 200)',
+      backgroundColor: 'rgba(44, 22, 200, 0.5)',
+    },
   ]
 };
 
