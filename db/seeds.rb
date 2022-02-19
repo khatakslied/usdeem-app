@@ -61,15 +61,15 @@ require 'json'
 serialized_data = File.read("public/data_hash.json")
 report_data=JSON.parse(serialized_data)
 
-# 6 months worth of past reports (recipient: Vivian)
-senders = [user2, user3, user4]
+# 6 months worth of past reports (recipient: everyone)
+users = [user1, user2, user3, user4]
 reports = []
-senders.each do |sender|
+users.each do |user|
   6.times do |n|
     report = Report.create!(
       created_at: Date.today - n.month,
-      sender: sender,
-      recipient: user1
+      sender: users.sample,
+      recipient: user
     )
     reports << report
   end
@@ -90,8 +90,8 @@ reports.each do |report|
       skills_and_question['skills'].each do |skill|
         Skill.create!(
           name: skill,
-          skill_group: skill_group_name,
-          improve: [true, false][rand(2)]
+          improve: [true, false][rand(2)],
+          skill_group: skill_group_name
         )
       end
     end
