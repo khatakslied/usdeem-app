@@ -45,6 +45,7 @@ export const data = {
 const AllTraitsLineGraph = () => {
   return (
     <div>
+      <h4>--AllTraitsLineGraph component--</h4>
       <Line options={options} data={data} />
     </div>
   )
