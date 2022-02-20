@@ -22,7 +22,7 @@ const Dashboard = props => {
     <div className="dashboard-container">
       <div className="dashboard-column">
         Left
-        <AllTraitsLineGraph />
+        <AllTraitsLineGraph last_six_months_reports={props.last_six_months_reports}/>
       </div>
       <div className="dashboard-column">
         Right
