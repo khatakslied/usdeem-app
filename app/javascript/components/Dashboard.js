@@ -1,6 +1,7 @@
 import React from "react"
 import AllTraitsLineGraph from "./AllTraitsLineGraph";
 import KeyTraitScore from "./KeyTraitScore"
+import ChartRadar from "./ChartRadar";
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 // import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -24,17 +25,15 @@ const Dashboard = props => {
     reportData.length === 0 ?
     <div><h1>Generating report...</h1></div> :
     <div>
-      {/* <FontAwesomeIcon icon={faCoffee} /> */}
-      {/* <ProfileMessage user={props.user}/> */}
       <div className="dashboard-container">
         <div className="dashboard-column">
           <p>Left</p>
+            <ChartRadar />
             <AllTraitsLineGraph last_six_months_reports={props.last_six_months_reports} />
         </div>
         <div className="dashboard-column">
           <p>Right</p>
           <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
-{/* //        <KeyTraitScore latest_reports={props.latest_reports} key_trait={keyTrait} /> */}
         </div>
       </div>
     </div>
