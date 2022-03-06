@@ -39,7 +39,6 @@ const AllTraitsLineGraph = props => {
     })
   };
 
-
   const options = {
     responsive: true,
     plugins: {
