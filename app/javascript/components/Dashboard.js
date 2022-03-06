@@ -1,21 +1,21 @@
 import React from "react"
+import AllTraitsLineGraph from "./AllTraitsLineGraph";
 import KeyTraitScore from "./KeyTraitScore"
-import ProfileMessage from "./ProfileMessage"
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 // import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 // library.add(fab, faCheckSquare, faCoffee)
 
+const Dashboard = props => {
 
-export default function Dashboard(props) {
-  const [keyTrait, setKeyTrait] = React.useState('Problem Solving')
+  const [keyTrait, setKeyTrait] = React.useState(['Problem Solving'])
   const [reportData, setReportData] = React.useState([])
-  React.useEffect(()=> {
-    const data = fetch("/reports.json")
+  React.useEffect(() => {
+    fetch("/reports.json")
       .then(response => response.json())
-        .then(data => setReportData(data))
-        .catch(err => console.log(err))
+      .then(data => setReportData(data))
+      .catch(err => console.log(err))
   }, [])
 
   console.log(reportData)
@@ -33,8 +33,11 @@ export default function Dashboard(props) {
         <div className="dashboard-column">
           <p>Right</p>
           <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
+//        <KeyTraitScore latest_reports={props.latest_reports} key_trait={keyTrait} />
         </div>
       </div>
     </div>
   )
 }
+
+export default Dashboard;

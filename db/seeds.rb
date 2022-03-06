@@ -94,8 +94,8 @@ reports.each do |report|
       skills_and_question['skills'].each do |skill|
         Skill.create!(
           name: skill,
-          skill_group: skill_group_name,
-          improve: [true, false][rand(2)]
+          improve: [true, false][rand(2)],
+          skill_group: skill_group_name
         )
       end
     end
