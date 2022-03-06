@@ -61,18 +61,22 @@ require 'json'
 serialized_data = File.read("public/data_hash.json")
 report_data=JSON.parse(serialized_data)
 
-# 6 months worth of past reports (recipient: Vivian)
-senders = [user2, user3, user4]
+# 6 months worth of past reports for every users
 reports = []
-senders.each do |sender|
-  6.times do |n|
-    report = Report.create!(
-      created_at: Date.today - n.month,
-      sender: sender,
-      recipient: user1
-    )
-    reports << report
+users = [user1, user2, user3, user4]
+users.each do |user|
+  senders = users.filter { |sender| sender != user }
+  senders.each do |sender|
+    6.times do |n|
+      report = Report.create!(
+        created_at: Date.today - n.month,
+        sender: sender,
+        recipient: user
+      )
+      reports << report
+    end
   end
+  puts "Empty reports for #{user.first_name} were created"
 end
 
 reports.each do |report|

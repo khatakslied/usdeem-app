@@ -1,6 +1,10 @@
 .keytrait-score-container{
   margin: 10px;
 }
+
+.rating-skill-group-container {
+  margin-bottom: 15px;
+}
 .rating-title-container{
   display:flex;
   align-items: baseline;
@@ -13,11 +17,19 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 10px;
+  row-gap: 10px;
   text-align: center;
 
   .rating-skills-item{
     padding: 5px;
     background-color: lightgray;
     font-size: 12px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      margin: 0;
+    }
   }
 }
