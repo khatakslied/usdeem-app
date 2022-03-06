@@ -20,23 +20,23 @@ const Dashboard = props => {
 
   console.log(reportData)
 
-  return(
+  return (
     reportData.length === 0 ?
-    <div><h1>Generating report...</h1></div> :
-    <div>
-      {/* <FontAwesomeIcon icon={faCoffee} /> */}
-      <ProfileMessage user={props.user}/>
-      <div className="dashboard-container">
-        <div className="dashboard-column">
-          <p>Left</p>
-        </div>
-        <div className="dashboard-column">
-          <p>Right</p>
-          <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
+      <div><h1>Generating report...</h1></div> :
+      <div>
+        {/* <FontAwesomeIcon icon={faCoffee} /> */}
+        {/* <ProfileMessage user={props.user} /> */}
+        <div className="dashboard-container">
+          <div className="dashboard-column">
+            <p>Left</p>
+          </div>
+          <div className="dashboard-column">
+            <p>Right</p>
+            <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait} />
 //        <KeyTraitScore latest_reports={props.latest_reports} key_trait={keyTrait} />
+          </div>
         </div>
       </div>
-    </div>
   )
 }
 
