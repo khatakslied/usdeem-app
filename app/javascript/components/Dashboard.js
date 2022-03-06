@@ -18,15 +18,23 @@ const Dashboard = props => {
       .catch(err => console.log(err))
   }, [])
 
-  return (
-    <div className="dashboard-container">
-      <div className="dashboard-column">
-        Left
-        <AllTraitsLineGraph last_six_months_reports={props.last_six_months_reports}/>
-      </div>
-      <div className="dashboard-column">
-        Right
-        <KeyTraitScore latest_reports={props.latest_reports} key_trait={keyTrait} />
+  console.log(reportData)
+
+  return(
+    reportData.length === 0 ?
+    <div><h1>Generating report...</h1></div> :
+    <div>
+      {/* <FontAwesomeIcon icon={faCoffee} /> */}
+      <ProfileMessage user={props.user}/>
+      <div className="dashboard-container">
+        <div className="dashboard-column">
+          <p>Left</p>
+        </div>
+        <div className="dashboard-column">
+          <p>Right</p>
+          <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
+//        <KeyTraitScore latest_reports={props.latest_reports} key_trait={keyTrait} />
+        </div>
       </div>
     </div>
   )

@@ -3,7 +3,6 @@ import SkillGroupRating from "./SkillGroupRating"
 
 
 export default function KeyTraitScore(props) {
-
   // target key_trait from each report
   const keyTraitsArray = props.latest_reports.map(report => {
     return report.key_traits
