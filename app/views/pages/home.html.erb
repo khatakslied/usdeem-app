@@ -1,4 +1,3 @@
 <h1>Pages#home</h1>
-
-
-<%= react_component("Dashboard", { user: @user }) %>
+<%= react_component("ProfileMessage", { user: @user }) %>
+<%= react_component("Dashboard", { user: @user, latest_reports: @last_month_reports, last_six_months_reports: @last_six_months_reports }) %>
