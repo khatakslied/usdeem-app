@@ -1,15 +1,8 @@
 class ReportsController < ApplicationController
   def index
-<<<<<<< HEAD
-    @reports = Report.all
-    @last_month_reports = Report.where(recipient: current_user,
-                                       created_at: Date.today.beginning_of_month..Date.today.end_of_month)
-                                .includes(:key_traits).as_json(include: [key_traits: { include: [skill_groups: { include: :skills }] }])
-=======
     @reports = [Report.all]
     @last_month_reports = [Report.where(recipient: current_user,
                                         created_at: Date.today.beginning_of_month..Date.today.end_of_month)]
->>>>>>> master
   end
 
   def new
