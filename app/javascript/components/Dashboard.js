@@ -2,6 +2,7 @@ import React from "react"
 import AllTraitsLineGraph from "./AllTraitsLineGraph";
 import KeyTraitScore from "./KeyTraitScore"
 import ChartRadar from "./ChartRadar";
+import BarLineChart from "./BarLineChart";
 // import { library } from '@fortawesome/fontawesome-svg-core'
 // import { fab } from '@fortawesome/free-brands-svg-icons'
 // import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -33,6 +34,7 @@ const Dashboard = props => {
         </div>
         <div className="dashboard-column">
           <p>Right</p>
+          <BarLineChart />
           <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
         </div>
       </div>
