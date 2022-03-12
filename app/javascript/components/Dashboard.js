@@ -20,7 +20,7 @@ const Dashboard = props => {
       .catch(err => console.log(err))
   }, [])
 
-  console.log(reportData)
+  // console.log(reportData)
 
   return(
     reportData.length === 0 ?
@@ -34,7 +34,10 @@ const Dashboard = props => {
         </div>
         <div className="dashboard-column">
           <p>Right</p>
-          <BarLineChart />
+          <BarLineChart
+            last_six_months_reports={props.last_six_months_reports}
+            all_reports={reportData[2]}
+          />
           <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
         </div>
       </div>

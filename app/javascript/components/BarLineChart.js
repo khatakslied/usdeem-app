@@ -18,8 +18,6 @@ import { Chart } from 'react-chartjs-2';
 // https://react-chartjs-2.js.org/examples/multitype-chart
 // https://react-chartjs-2.js.org/
 
-// need an options variable and pass it on the render as well, just like Ryan's
-
 ChartJS.register(
   LinearScale,
   CategoryScale,
