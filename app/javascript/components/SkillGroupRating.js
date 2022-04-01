@@ -3,7 +3,6 @@ import React from "react"
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 export default function SkillGroupRating(props) {
-  // const skillsNeedImprovement = props.skills.filter(skill => skill.improve == true)
   const skillsElements = props.skillsToImprove.map(skill => {
     return(
       <div className="rating-skills-item" key={Math.random()}>
