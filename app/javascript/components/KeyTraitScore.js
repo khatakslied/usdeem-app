@@ -1,5 +1,6 @@
 import React from "react"
 import SkillGroupRating from "./SkillGroupRating"
+import getSkillGroupsData from "../actions/getSkillGroupsData"
 
 
 export default function KeyTraitScore(props) {
@@ -14,7 +15,6 @@ export default function KeyTraitScore(props) {
 
   // get skill_groups of target key_trait
   const targetSkillGroupArray = targetTrait.map(key_trait => key_trait.skill_groups).flat()
-  console.log(targetSkillGroupArray)
   // get the example skill_groups
   const exampleSkillGroups = targetTrait[0].skill_groups
 
@@ -24,11 +24,10 @@ export default function KeyTraitScore(props) {
     let report_num = props.latest_reports.length
     for (let i = 0; i < targetSkillGroupArray.length; i++){
       if (skill_group.category === targetSkillGroupArray[i].category){
-        console.log(`Score: ${targetSkillGroupArray[i].score}`)
+        // console.log(`Score: ${targetSkillGroupArray[i].score}`)
         sum += targetSkillGroupArray[i].score
       }
     }
-    console.log(`Sum: ${sum}`)
     return (sum / report_num).toFixed(1)
   })
 
@@ -38,15 +37,15 @@ export default function KeyTraitScore(props) {
     let num = targetSkillGroupArray.length
     for (let i = 0; i < num; i++) {
       if (skill_group.category === targetSkillGroupArray[i].category) {
-        skills.push(skill_group.skills) // error --> should be getting skills from targetSkillGroupArray
+        skills.push(targetSkillGroupArray[i].skills) // error --> should be getting skills from targetSkillGroupArray
       }
     }
-    console.log("skills array before flattening:")
-    console.log(skills)
     return [...new Set(skills.flat())] // unique skills
   })
-  console.log("skills array after flattening:")
-  console.log(skillsArray)
+  // console.log([props.latest_reports, props.key_trait[0]])
+  const skillGroupsData = getSkillGroupsData(props.latest_reports, props.key_trait[0])
+  console.log(`skill groups data:`)
+  console.log(skillGroupsData)
 
   // create skill_group_rating components
   const skillGroupRatings = averageScoreArray.map((score, index) => {
