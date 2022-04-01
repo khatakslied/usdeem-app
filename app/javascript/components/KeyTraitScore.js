@@ -38,7 +38,7 @@ export default function KeyTraitScore(props) {
     let num = targetSkillGroupArray.length
     for (let i = 0; i < num; i++) {
       if (skill_group.category === targetSkillGroupArray[i].category) {
-        skills.push(skill_group.skills)
+        skills.push(skill_group.skills) // error --> should be getting skills from targetSkillGroupArray
       }
     }
     console.log("skills array before flattening:")
