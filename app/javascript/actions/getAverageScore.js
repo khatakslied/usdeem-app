@@ -7,10 +7,9 @@ export default function getAverageScore(latest_reports, target_key_trait){
   skillGroupsData.forEach(skillGroupData => {
     for (var skill_group in skillGroupData) {
       if (skillGroupData.hasOwnProperty(skill_group)) {
-        sum += skillGroupData[skill_group]['score']
+        sum += parseFloat(skillGroupData[skill_group]['score'])
       }
     }
   })
-
   return (sum / skillGroupsData.length).toFixed(1)
 }
