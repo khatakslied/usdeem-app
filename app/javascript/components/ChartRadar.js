@@ -23,17 +23,17 @@ ChartJS.register(
 
 
 export default function ChartRadar(props) {
+  const skillGroups = ["Problem Solving", "Leadership", "Work Ethic", "Teamwork", "Communication", "Time Management"]
+  const skillGroupsScore = skillGroups.map(skillGroup => {
+    return getAverageScore(props.latest_reports, skillGroup)
+  })
+
   const data = {
-    labels: ["Problem Solving", "Leadership", "Work Ethic", "Teamwork", "Communication", "Time Management"],
+    labels: skillGroups,
     datasets: [
       {
         label: '# of Votes',
-        data: [getAverageScore(props.latest_reports, "Problem Solving"),
-               getAverageScore(props.latest_reports, "Leadership"),
-               getAverageScore(props.latest_reports, "Work Ethic"),
-               getAverageScore(props.latest_reports, "Teamwork"),
-               getAverageScore(props.latest_reports, "Communication"),
-               getAverageScore(props.latest_reports, "Time Management")],
+        data: skillGroupsScore,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
