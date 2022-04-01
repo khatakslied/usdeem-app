@@ -1,6 +1,7 @@
 import React from "react"
 import SkillGroupRating from "./SkillGroupRating"
 import getSkillGroupsData from "../actions/getSkillGroupsData"
+import getAverageScore from "../actions/getAverageScore"
 
 
 export default function KeyTraitScore(props) {
