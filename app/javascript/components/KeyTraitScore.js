@@ -9,7 +9,7 @@ export default function KeyTraitScore(props) {
   }).flat()
 
   const targetTrait = keyTraitsArray.filter(key_trait => {
-    return key_trait.category === props.key_trait[0]
+    return key_trait.category === props.key_trait[0] // set to probelm sovling for now
   })
 
   // get skill_groups of target key_trait
@@ -41,8 +41,12 @@ export default function KeyTraitScore(props) {
         skills.push(skill_group.skills)
       }
     }
+    console.log("skills array before flattening:")
+    console.log(skills)
     return [...new Set(skills.flat())] // unique skills
   })
+  console.log("skills array after flattening:")
+  console.log(skillsArray)
 
   // create skill_group_rating components
   const skillGroupRatings = averageScoreArray.map((score, index) => {
