@@ -3,14 +3,15 @@ import React from "react"
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 export default function SkillGroupRating(props) {
-  const skillsNeedImprovement = props.skills.filter(skill => skill.improve == true)
-  const skillsElements = skillsNeedImprovement.map(skill => {
+  // const skillsNeedImprovement = props.skills.filter(skill => skill.improve == true)
+  const skillsElements = props.skillsToImprove.map(skill => {
     return(
       <div className="rating-skills-item" key={Math.random()}>
-        <p>{skill.name}</p>
+        <p>{skill}</p>
       </div>
     )
   })
+
   return (
     <div className="rating-skill-group-container">
       <div className="rating-title-container">
@@ -19,7 +20,7 @@ export default function SkillGroupRating(props) {
       </div>
       <p>Aspects to improve:</p>
       <div className="rating-skills-container">
-        {skillsNeedImprovement.count == 0 ? "Nothing is suggested!" : skillsElements}
+        {props.skillsToImprove.count == 0 ? "Nothing is suggested!" : skillsElements}
       </div>
     </div>
   )

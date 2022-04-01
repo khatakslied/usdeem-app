@@ -42,21 +42,33 @@ export default function KeyTraitScore(props) {
     }
     return [...new Set(skills.flat())] // unique skills
   })
-  // console.log([props.latest_reports, props.key_trait[0]])
+
+
+  // create skill_group_rating components
+  // const skillGroupRatings = averageScoreArray.map((score, index) => {
+  //   return (
+  //     <SkillGroupRating key={Math.random()} score={score} name={exampleSkillGroups[index].category} skills={skillsArray[index]}/>
+  //     )
+  //   })
+
   const skillGroupsData = getSkillGroupsData(props.latest_reports, props.key_trait[0])
   console.log(`skill groups data:`)
   console.log(skillGroupsData)
 
-  // create skill_group_rating components
-  const skillGroupRatings = averageScoreArray.map((score, index) => {
-    return (
-      <SkillGroupRating key={Math.random()} score={score} name={exampleSkillGroups[index].category} skills={skillsArray[index]}/>
-    )
+  const skillGroupsRatings = skillGroupsData.map(data => {
+    for (var skill_group in data) {
+      if (data.hasOwnProperty(skill_group)) {
+        return(
+          <SkillGroupRating key={Math.random()} name={skill_group} score={data[skill_group]['score']} skillsToImprove={data[skill_group]['to_improve']} />
+        )
+      }
+    }
   })
 
   return(
     <div className="keytrait-score-container">
-      {skillGroupRatings}
+      {/* {skillGroupRatings} */}
+      {skillGroupsRatings}
     </div>
   )
 };
