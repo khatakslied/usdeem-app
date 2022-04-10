@@ -13,29 +13,31 @@ export default function KeyTraitScore(props) {
   })
 
   // get skill_groups of target key_trait
-  const skillGroupArray = targetTrait.map(key_trait => key_trait.skill_groups).flat()
-
-  // target skill_groups
-  const targetSkillGroups = targetTrait[0].skill_groups
+  const targetSkillGroupArray = targetTrait.map(key_trait => key_trait.skill_groups).flat()
+  console.log(targetSkillGroupArray)
+  // get the example skill_groups
+  const exampleSkillGroups = targetTrait[0].skill_groups
 
   // calculate average score for each skill_group
-  const averageScoreArray = targetSkillGroups.map(skill_group => {
+  const averageScoreArray = exampleSkillGroups.map(skill_group => {
     let sum = 0
     let report_num = props.latest_reports.length
-    for (let i = 0; i < targetSkillGroups.length; i++){
-      if (skill_group.category === targetSkillGroups[i].category){
-        sum += targetSkillGroups[i].score
+    for (let i = 0; i < targetSkillGroupArray.length; i++){
+      if (skill_group.category === targetSkillGroupArray[i].category){
+        console.log(`Score: ${targetSkillGroupArray[i].score}`)
+        sum += targetSkillGroupArray[i].score
       }
     }
+    console.log(`Sum: ${sum}`)
     return (sum / report_num).toFixed(1)
   })
 
   // get skills for each skill_group
-  const skillsArray = targetSkillGroups.map(skill_group => {
+  const skillsArray = exampleSkillGroups.map(skill_group => {
     let skills = []
-    let num = skillGroupArray.length
+    let num = targetSkillGroupArray.length
     for (let i = 0; i < num; i++) {
-      if (skill_group.category === skillGroupArray[i].category) {
+      if (skill_group.category === targetSkillGroupArray[i].category) {
         skills.push(skill_group.skills)
       }
     }
@@ -45,13 +47,12 @@ export default function KeyTraitScore(props) {
   // create skill_group_rating components
   const skillGroupRatings = averageScoreArray.map((score, index) => {
     return (
-      <SkillGroupRating key={Math.random()} score={score} name={targetSkillGroups[index].category} skills={skillsArray[index]}/>
+      <SkillGroupRating key={Math.random()} score={score} name={exampleSkillGroups[index].category} skills={skillsArray[index]}/>
     )
   })
 
   return(
     <div className="keytrait-score-container">
-      <h4>--KeyTraitScore component--</h4>
       {skillGroupRatings}
     </div>
   )
