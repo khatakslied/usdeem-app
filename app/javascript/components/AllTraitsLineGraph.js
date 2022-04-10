@@ -17,7 +17,7 @@ const AllTraitsLineGraph = props => {
 
   // set graph labels to last six months
   const labels = monthsArray;
-  console.log (monthKeysArray);
+  // console.log (monthKeysArray);
 
   // get key_traits
   const keyTraitsArray = props.last_six_months_reports[0].key_traits.map(trait => {
