@@ -38,7 +38,7 @@ const Dashboard = props => {
             last_six_months_reports={props.last_six_months_reports}
             all_reports={reportData[2]}
           />
-          <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
+          {/* <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/> */}
         </div>
       </div>
     </div>
