@@ -1,10 +1,17 @@
 // Define variables for your color scheme
 
-// For example:
-$red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
-$orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+// light mode color theme
+$dark-blue: #023047;
+$light-mode-gray: #E9E9E6;
+
+
+// dark mode color theme
+$orange: #FFB703;
+$black: #161A1D;
+$dark-mode-gray: rgba(245, 245, 245, 0.1);
+
+// rating star
+$yellow: #F4E241;
+
+// 'get help' button
+$red: #E96262;
