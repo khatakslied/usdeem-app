@@ -1,4 +1,6 @@
 import React from 'react';
+import getAverageScore from "../actions/getAverageScore"
+
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -19,34 +21,39 @@ ChartJS.register(
   Legend
 );
 
-export const data = {
-  labels: ["Problem Solving", "Leadership", "Work Ethic", "Teamwork", "Communication", "Time Management"],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [2, 4, 3, 5, 2, 3],
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
-      borderWidth: 1,
-    },
-  ],
 
-};
+export default function ChartRadar(props) {
+  const skillGroups = ["Problem Solving", "Leadership", "Work Ethic", "Teamwork", "Communication", "Time Management"]
+  const skillGroupsScore = skillGroups.map(skillGroup => {
+    return getAverageScore(props.latest_reports, skillGroup)
+  })
 
-export const options = {
-  responsive: true,
-  scales: {
-    r: {
-      max: 5,
-      min: 0,
-      ticks: {
-        stepSize: 1
+  const data = {
+    labels: skillGroups,
+    datasets: [
+      {
+        label: '# of Votes',
+        data: skillGroupsScore,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+      },
+    ],
+
+  };
+
+  const options = {
+    responsive: true,
+    scales: {
+      r: {
+        max: 5,
+        min: 0,
+        ticks: {
+          stepSize: 1
+        }
       }
     }
-  }
-};
-
-export default function ChartRadar() {
+  };
   return <Radar data={data}
     options={options}
   />;
