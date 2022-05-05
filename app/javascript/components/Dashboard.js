@@ -20,7 +20,9 @@ const Dashboard = props => {
       .catch(err => console.log(err))
   }, [])
 
-  // console.log(reportData)
+  // console.log(reportData,'original reportData from dashboard')
+  // console.log(props.last_six_months_reports, 'original props.last_six_months_reports passed to dashboard from pages controller')
+  // console.log(props.all_reports, 'new all_reports props passed')
 
   return(
     reportData.length === 0 ?
@@ -36,7 +38,7 @@ const Dashboard = props => {
           <p>Right</p>
           <BarLineChart
             last_six_months_reports={props.last_six_months_reports}
-            all_reports={reportData[2]}
+            all_reports={props.company_last_six_months_reports}
           />
           {/* <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/> */}
         </div>
