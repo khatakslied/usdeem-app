@@ -13,6 +13,7 @@ const Dashboard = props => {
 
   const [keyTrait, setKeyTrait] = React.useState(['Problem Solving'])
   const [reportData, setReportData] = React.useState([])
+  // const [latestReport, setLatestReport] = React.useState([])
   React.useEffect(() => {
     fetch("/reports.json")
       .then(response => response.json())
@@ -20,9 +21,7 @@ const Dashboard = props => {
       .catch(err => console.log(err))
   }, [])
 
-  // console.log(reportData,'original reportData from dashboard')
-  // console.log(props.last_six_months_reports, 'original props.last_six_months_reports passed to dashboard from pages controller')
-  // console.log(props.all_reports, 'new all_reports props passed')
+  // console.log(reportData)
 
   return(
     reportData.length === 0 ?
@@ -31,7 +30,7 @@ const Dashboard = props => {
       <div className="dashboard-container">
         <div className="dashboard-column">
           <p>Left</p>
-            <ChartRadar />
+            <ChartRadar latest_reports={reportData[0]} key_trait={keyTrait}/>
             <AllTraitsLineGraph last_six_months_reports={props.last_six_months_reports} />
         </div>
         <div className="dashboard-column">
