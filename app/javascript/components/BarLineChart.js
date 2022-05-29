@@ -26,9 +26,8 @@ const BarLineChart = props => {
   const [userLastData, setUserLastData] = useState([])
   const [CompanyLastData, setCompanyLastData] = useState([])
 
-  // TODO: Suspicius: Values are very close but should be correct
-  // User/April = around 3.116
-  // Company/April = around 2.89
+  // TODO: The resulting values (avg scores )are very close. Is there any value
+  // in this current version of this component?
 
   // Gets the months for "labels" of the chart
   const monthKeysArray = props.last_six_months_reports.map(report => {
@@ -57,7 +56,7 @@ const BarLineChart = props => {
       scoresMonth: monthNames[new Date(report.created_at).getMonth()]
     }
   });
-  console.log(keyTraitsScoresArray, 'user keyTraitsScoresArray first big one')
+  // console.log(keyTraitsScoresArray, 'user keyTraitsScoresArray first big one')
 
 // If it exists, to avoid errors, aggregates same months
 // the scores based on how many were the same (month)
@@ -68,13 +67,13 @@ const BarLineChart = props => {
       const current = acc.get(key) || { ...r, totalScores: 0 };
       return acc.set(key, { ...current, totalScores: current.totalScores + totalScores });
     }, new Map).values()).reverse();
-    console.log(reducedArray, 'user reducedArray, aggregated months one')
-    // makes an object with the month as keys and the value as the number of times we have that month
+    // console.log(reducedArray, 'user reducedArray, aggregated months one')
+    // Makes an object with the month as keys and the value as the number of times we have that month
     const counts = {};
     keyTraitsScoresArray.forEach(function (x) {
       counts[x.scoresMonth] = (counts[x.scoresMonth] || 0) + 1;
     });
-    console.log(counts, 'user counts, the number of times the month repeats')
+    // console.log(counts, 'user counts, the number of times the month repeats')
 
     // Divides the totalscores by the months counter and returns a set of
     // objects with averagedScore and month as keys
@@ -89,18 +88,18 @@ const BarLineChart = props => {
           })
       }
     })
-    console.log(finalAveragedMonths, 'user finalAverageMonths, the final set')
+    // console.log(finalAveragedMonths, 'user finalAverageMonths, the final set')
 
     // Creates a new array with the values only in the same order as the labels
     const finalAverageMonthsArr = Array.from(finalAveragedMonths)
-    console.log(finalAverageMonthsArr, 'user new array from the Set')
+    // console.log(finalAverageMonthsArr, 'user new array from the Set')
     const dataValues = []
     finalAverageMonthsArr.forEach(obj => {
       if (obj.month == labels.find(m => obj.month == m)) {
         dataValues.push(obj.averagedScore)
         }
     })
-    console.log(dataValues, 'user final data values for chart')
+    // console.log(dataValues, 'user final data values for chart')
     // Avoids infite loop due to re render
     useEffect(() => {
       setUserLastData(dataValues);
@@ -109,7 +108,7 @@ const BarLineChart = props => {
   // -------------------- END USER DATA
 
   // -------------------- COMPANY DATA
-  console.log(props.all_reports, 'props.all reports companys total last 6 months')
+  // console.log(props.all_reports, 'props.all reports companys total last 6 months')
   // I need the average of everything for the last 6 months for the company
   const companyKeyTraitsScoresArray = props.all_reports.map(report => {
     return {
@@ -121,7 +120,7 @@ const BarLineChart = props => {
       scoresMonth: monthNames[new Date(report.created_at).getMonth()]
     }
   });
-  console.log(companyKeyTraitsScoresArray, "companys big first list")
+  // console.log(companyKeyTraitsScoresArray, "companys big first list")
 
   if (companyKeyTraitsScoresArray) {
     const reducedCompanyArray = Array.from(companyKeyTraitsScoresArray.reduce((acc, { totalScores, ...r }) => {
@@ -129,13 +128,13 @@ const BarLineChart = props => {
       const current = acc.get(key) || { ...r, totalScores: 0 };
       return acc.set(key, { ...current, totalScores: current.totalScores + totalScores });
     }, new Map).values()).reverse();
-    console.log(reducedCompanyArray, 'company reducedCompanyArray, aggregated one months')
+    // console.log(reducedCompanyArray, 'company reducedCompanyArray, aggregated one months')
     // makes an object with the month as keys and the value as the number of times we have that month
     const counts = {};
     companyKeyTraitsScoresArray.forEach(function (x) {
       counts[x.scoresMonth] = (counts[x.scoresMonth] || 0) + 1;
     });
-    console.log(counts, 'company counts, the number of times the month repeats')
+    // console.log(counts, 'company counts, the number of times the month repeats')
 
     // Divides the totalscores by the months counter and returns a set of
     // objects with averagedScore and month as keys
@@ -151,18 +150,18 @@ const BarLineChart = props => {
           })
       }
     })
-    console.log(finalAveragedMonths, 'company finalAverageMonths, the final set')
+    // console.log(finalAveragedMonths, 'company finalAverageMonths, the final set')
 
     // Creates a new array with the values only in the same order as the labels
     const finalAverageMonthsArr = Array.from(finalAveragedMonths)
-    console.log(finalAverageMonthsArr, 'company new array from the Set')
+    // console.log(finalAverageMonthsArr, 'company new array from the Set')
     const companyDataValues = []
     finalAverageMonthsArr.forEach(obj => {
       if (obj.month == labels.find(m => obj.month == m)) {
         companyDataValues.push(obj.averagedScore)
       }
     })
-    console.log(companyDataValues, 'last company data, actual values')
+    // console.log(companyDataValues, 'last company data, actual values')
     // Avoids infite loop due to re render
     useEffect(() => {
       setCompanyLastData(companyDataValues);
