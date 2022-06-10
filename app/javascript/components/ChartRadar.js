@@ -27,6 +27,7 @@ export default function ChartRadar(props) {
   const skillGroupsScore = skillGroups.map(skillGroup => {
     return getAverageScore(props.latest_reports, skillGroup)
   })
+  const [labelColors, setLabelColors] = React.useState(['red', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'])
 
   const data = {
     labels: skillGroups,
@@ -48,6 +49,7 @@ export default function ChartRadar(props) {
       const clickedX = event.x;
       const clickedY = event.y;
       const pointLabelArray = this.boxes[3]._pointLabelItems; // locating pointLabelItems to get their locations
+      console.log(this.boxes[3]._pointLabels)
       pointLabelArray.map((pointLabel, index) => {
         // if clicked within the range of a point label, then changed text color to red
         if (
@@ -56,8 +58,10 @@ export default function ChartRadar(props) {
           clickedY <= pointLabel.bottom &&
           clickedY >= pointLabel.top
           ){
-          var labelColors = ['#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'];
-          labelColors[index] = 'red';
+          props.setKeyTrait([this.boxes[3]._pointLabels[index]])
+          var initlabelColors = ['#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'];
+          initlabelColors[index] = 'red';
+          setLabelColors(initlabelColors);
           this.options.scales.r.pointLabels.color = labelColors;
           this.update();
         }
@@ -69,7 +73,7 @@ export default function ChartRadar(props) {
         max: 5,
         min: 0,
         pointLabels: {
-          color: ['red', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'], // initial color settings
+          color: labelColors, // initial color settings
           font: {
             size: 15
           }

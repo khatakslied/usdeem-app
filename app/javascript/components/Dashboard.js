@@ -34,7 +34,7 @@ const Dashboard = props => {
       <div className="dashboard-container">
         <div className="dashboard-column">
           <p>Left</p>
-            <ChartRadar latest_reports={reportData[0]} key_trait={keyTrait}/>
+            <ChartRadar latest_reports={reportData[0]} key_trait={keyTrait} setKeyTrait={setKeyTrait}/>
             <AllTraitsLineGraph last_six_months_reports={props.last_six_months_reports} />
         </div>
         <div className="dashboard-column">
