@@ -23,6 +23,10 @@ const Dashboard = props => {
 
   // console.log(reportData)
 
+  const setSelectedKeyTrait = (keyTrait) => {
+    return setKeyTrait(keyTrait)
+  }
+
   return(
     reportData.length === 0 ?
     <div><h1>Generating report...</h1></div> :

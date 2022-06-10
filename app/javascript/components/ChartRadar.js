@@ -44,16 +44,46 @@ export default function ChartRadar(props) {
 
   const options = {
     responsive: true,
+    onClick: function(event, element){
+      const clickedX = event.x;
+      const clickedY = event.y;
+      const pointLabelArray = this.boxes[3]._pointLabelItems; // locating pointLabelItems to get their locations
+      pointLabelArray.map((pointLabel, index) => {
+        // if clicked within the range of a point label, then changed text color to red
+        if (
+          clickedX <= pointLabel.right &&
+          clickedX >= pointLabel.left &&
+          clickedY <= pointLabel.bottom &&
+          clickedY >= pointLabel.top
+          ){
+          var labelColors = ['#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'];
+          labelColors[index] = 'red';
+          this.options.scales.r.pointLabels.color = labelColors;
+          this.update();
+        }
+
+      })
+    },
     scales: {
       r: {
         max: 5,
         min: 0,
+        pointLabels: {
+          color: ['red', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'], // initial color settings
+        },
         ticks: {
-          stepSize: 1
+          stepSize: 1,
+          backdropColor: '#F4F4F4'
         }
       }
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
     }
   };
+
   return <Radar data={data}
     options={options}
   />;
