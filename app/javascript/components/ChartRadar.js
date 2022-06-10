@@ -73,7 +73,7 @@ export default function ChartRadar(props) {
         max: 5,
         min: 0,
         pointLabels: {
-          color: labelColors, // initial color settings
+          color: labelColors,
           font: {
             size: 15
           }
