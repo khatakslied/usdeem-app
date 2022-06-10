@@ -70,6 +70,9 @@ export default function ChartRadar(props) {
         min: 0,
         pointLabels: {
           color: ['red', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'], // initial color settings
+          font: {
+            size: 15
+          }
         },
         ticks: {
           stepSize: 1,
