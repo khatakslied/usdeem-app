@@ -109,8 +109,8 @@ const AllTraitsLineGraph = props => {
   };
 
   return (
-    <div>
-      <h4>--AllTraitsLineGraph component--</h4>
+    <div className='all-traits-line-graph-container'>
+      {/* <h4>--AllTraitsLineGraph component--</h4> */}
       <Line options={options} data={data} />
     </div>
   )
