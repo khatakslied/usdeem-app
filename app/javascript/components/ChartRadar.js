@@ -91,7 +91,11 @@ export default function ChartRadar(props) {
     }
   };
 
-  return <Radar data={data}
-    options={options}
-  />;
+  return(
+    <div className='radar-chart-container'>
+      <Radar data={data}
+        options={options}
+      />
+    </div>
+  )
 }
