@@ -26,8 +26,8 @@ const Dashboard = props => {
             <AllTraitsLineGraph last_six_months_reports={props.last_six_months_reports} />
         </div>
         <div className="dashboard-column">
-          <BarLineChart />
           <KeyTraitScore latest_reports={reportData[0]} key_trait={keyTrait}/>
+          <BarLineChart />
         </div>
       </div>
     </div>
