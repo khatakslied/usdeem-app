@@ -1,6 +1,5 @@
 import React from "react"
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import RatingStars from './RatingStars'
 
 export default function SkillGroupRating(props) {
   const skillsElements = props.skillsToImprove.map(skill => {
@@ -14,8 +13,9 @@ export default function SkillGroupRating(props) {
   return (
     <div className="rating-skill-group-container">
       <div className="rating-title-container">
-        <h3>{props.name}</h3>
+        <h4>{props.name}</h4>
         <p>{props.score}</p>
+        <RatingStars />
       </div>
       <p>Aspects to improve:</p>
       <div className="rating-skills-container">

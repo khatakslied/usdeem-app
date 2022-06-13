@@ -22,6 +22,7 @@ export default function KeyTraitScore(props) {
 
   return(
     <div className="keytrait-score-container">
+      <h2>{props.key_trait[0]}</h2>
       {skillGroupsRatings}
     </div>
   )
