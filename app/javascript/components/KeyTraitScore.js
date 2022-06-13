@@ -7,8 +7,6 @@ import getAverageScore from "../actions/getAverageScore"
 export default function KeyTraitScore(props) {
 
   const skillGroupsData = getSkillGroupsData(props.latest_reports, props.key_trait[0])
-  console.log(`skill groups data:`)
-  console.log(skillGroupsData)
 
   const skillGroupsRatings = skillGroupsData.map(data => {
     for (var skill_group in data) {
@@ -21,10 +19,10 @@ export default function KeyTraitScore(props) {
   })
 
   const averageScore = getAverageScore(props.latest_reports, props.key_trait[0])
-  console.log(averageScore)
 
   return(
     <div className="keytrait-score-container">
+      <h2>{props.key_trait[0]}</h2>
       {skillGroupsRatings}
     </div>
   )

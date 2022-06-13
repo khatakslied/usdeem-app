@@ -27,6 +27,7 @@ export default function ChartRadar(props) {
   const skillGroupsScore = skillGroups.map(skillGroup => {
     return getAverageScore(props.latest_reports, skillGroup)
   })
+  const [labelColors, setLabelColors] = React.useState(['rgba(2, 48, 71, 1)', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'])
 
   const data = {
     labels: skillGroups,
@@ -34,8 +35,8 @@ export default function ChartRadar(props) {
       {
         label: '# of Votes',
         data: skillGroupsScore,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(2, 48, 71, 0.5)',
+        borderColor: 'rgba(2, 48, 71, 1)',
         borderWidth: 1,
       },
     ],
@@ -44,17 +45,57 @@ export default function ChartRadar(props) {
 
   const options = {
     responsive: true,
+    onClick: function(event, element){
+      const clickedX = event.x;
+      const clickedY = event.y;
+      const pointLabelArray = this.boxes[3]._pointLabelItems; // locating pointLabelItems to get their locations
+      console.log(this.boxes[3]._pointLabels)
+      pointLabelArray.map((pointLabel, index) => {
+        // if clicked within the range of a point label, then changed text color to red
+        if (
+          clickedX <= pointLabel.right &&
+          clickedX >= pointLabel.left &&
+          clickedY <= pointLabel.bottom &&
+          clickedY >= pointLabel.top
+          ){
+          props.setKeyTrait([this.boxes[3]._pointLabels[index]])
+          var initlabelColors = ['#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'];
+          initlabelColors[index] = 'rgba(2, 48, 71, 1)';
+          setLabelColors(initlabelColors);
+          this.options.scales.r.pointLabels.color = labelColors;
+          this.update();
+        }
+
+      })
+    },
     scales: {
       r: {
         max: 5,
         min: 0,
+        pointLabels: {
+          color: labelColors,
+          font: {
+            size: 15
+          }
+        },
         ticks: {
-          stepSize: 1
+          stepSize: 1,
+          // backdropColor: '#F4F4F4'
         }
       }
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
     }
   };
-  return <Radar data={data}
-    options={options}
-  />;
+
+  return(
+    <div className='radar-chart-container'>
+      <Radar data={data}
+        options={options}
+      />
+    </div>
+  )
 }
