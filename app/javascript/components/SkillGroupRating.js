@@ -14,8 +14,8 @@ export default function SkillGroupRating(props) {
     <div className="rating-skill-group-container">
       <div className="rating-title-container">
         <h4>{props.name}</h4>
-        <p>{props.score}</p>
         <RatingStars />
+        <p>{props.score}</p>
       </div>
       <p>Aspects to improve:</p>
       <div className="rating-skills-container">

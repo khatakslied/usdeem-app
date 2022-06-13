@@ -4,29 +4,35 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
-library.add(faStar, faStarHalfStroke, far)
+library.add(faStar, far)
 
 export default function RatingStars() {
   const Star = () => (
     <div className='solid-star'>
-      <FontAwesomeIcon icon="star" />
+      <span>
+        <FontAwesomeIcon icon="star" />
+      </span>
     </div>
   )
 
   const StarTwo = () => (
     <div className='hollow-star'>
-      <FontAwesomeIcon icon={['far', 'star']} />
+      <span>
+        <FontAwesomeIcon icon={['far', 'star']} />
+      </span>
     </div>
   )
 
   const StarThree = () => (
-    <FontAwesomeIcon icon="star-half-stroke" />
+    <span>
+      <FontAwesomeIcon icon={['far', 'star-half-stroke']} />
+    </span>
   )
   return(
-    <>
+    <div className='rating-stars-container'>
       <Star />
-      <StarTwo />
-      <StarThree />
-    </>
+      {/* <StarTwo />
+      <StarThree /> */}
+    </div>
   );
 }

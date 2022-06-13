@@ -4,11 +4,6 @@
   }
 }
 
-.hollow-star svg{
-  // color:$light-gray;
-  // border:solid 1px black;
-}
-
 .rating-skill-group-container {
   margin-bottom: 15px;
 }
@@ -17,6 +12,15 @@
   align-items: baseline;
   p{
     margin-left: 5px;
+  }
+
+  .rating-stars-container{
+    display: flex;
+    align-items: baseline;
+    margin-left: 5px;
+    * {
+      color: $yellow;
+    }
   }
 }
 
