@@ -27,7 +27,7 @@ export default function ChartRadar(props) {
   const skillGroupsScore = skillGroups.map(skillGroup => {
     return getAverageScore(props.latest_reports, skillGroup)
   })
-  const [labelColors, setLabelColors] = React.useState(['red', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'])
+  const [labelColors, setLabelColors] = React.useState(['rgba(2, 48, 71, 1)', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'])
 
   const data = {
     labels: skillGroups,
@@ -35,8 +35,8 @@ export default function ChartRadar(props) {
       {
         label: '# of Votes',
         data: skillGroupsScore,
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
+        backgroundColor: 'rgba(2, 48, 71, 0.5)',
+        borderColor: 'rgba(2, 48, 71, 1)',
         borderWidth: 1,
       },
     ],
@@ -60,7 +60,7 @@ export default function ChartRadar(props) {
           ){
           props.setKeyTrait([this.boxes[3]._pointLabels[index]])
           var initlabelColors = ['#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb', '#dbdbdb'];
-          initlabelColors[index] = 'red';
+          initlabelColors[index] = 'rgba(2, 48, 71, 1)';
           setLabelColors(initlabelColors);
           this.options.scales.r.pointLabels.color = labelColors;
           this.update();
@@ -80,7 +80,7 @@ export default function ChartRadar(props) {
         },
         ticks: {
           stepSize: 1,
-          backdropColor: '#F4F4F4'
+          // backdropColor: '#F4F4F4'
         }
       }
     },

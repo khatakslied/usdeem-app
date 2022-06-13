@@ -1,5 +1,7 @@
 .keytrait-score-container{
   margin-top: 50px;
+  // background-color: $light-gray;
+  color: $dark-blue;
   p {
     margin: 5px;
   }
@@ -34,7 +36,7 @@
 
   .rating-skills-item{
     padding: 5px;
-    background-color: lightgray;
+    background-color: $dark-blue;
     font-size: 12px;
     border-radius: 5px;
     display: flex;
@@ -42,6 +44,7 @@
     justify-content: center;
     p {
       margin: 0;
+      color: white;
     }
   }
 }
