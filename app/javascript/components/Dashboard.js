@@ -8,6 +8,7 @@ const Dashboard = props => {
 
   const [keyTrait, setKeyTrait] = React.useState(['Problem Solving'])
   const [reportData, setReportData] = React.useState([])
+  const [mode, setMode] = React.useState('light')
 
   React.useEffect(() => {
     fetch("/reports.json")
