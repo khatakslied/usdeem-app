@@ -1,4 +1,5 @@
 import React from "react"
+import { useState, useEffect } from "react"
 import {
   Chart as ChartJS,
   LinearScale,
@@ -10,15 +11,6 @@ import {
   Tooltip,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
-// test for chart -- start (the above imports are also part of the test)
-// https://codesandbox.io/s/github/reactchartjs/react-chartjs-2/tree/master/sandboxes/chart/multitype?from-embed=&file=/App.tsx
-// more examples:
-// https://codesandbox.io/examples/package/react-chartjs-2
-// chart-react doc:
-// https://react-chartjs-2.js.org/examples/multitype-chart
-// https://react-chartjs-2.js.org/
-
-// need an options variable and pass it on the render as well, just like Ryan's
 
 ChartJS.register(
   LinearScale,
@@ -30,55 +22,190 @@ ChartJS.register(
   Tooltip
 );
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June'];
+const BarLineChart = props => {
+  const [userLastData, setUserLastData] = useState([])
+  const [CompanyLastData, setCompanyLastData] = useState([])
 
-const options = {
-  responsive: true,
-  scales: {
-    y: {
-      ticks: {
-        precision: 0
+  // TODO: The resulting values (avg scores )are very close. Is there any value
+  // in this current version of this component?
+
+  // Gets the months for "labels" of the chart
+  const monthKeysArray = props.last_six_months_reports.map(report => {
+    return new Date(report.created_at).getMonth()
+  }).flat().reverse().slice(-6)
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const monthsArray = monthKeysArray.map(monthKey => {
+    return monthNames[monthKey]
+  });
+
+  const labels = monthsArray
+
+// ----- CURRENT USER DATA
+// Returns an array with n reports with totalScores(average score in total for
+// that report), and scoresMonth (the month that it was created) as key
+  const keyTraitsScoresArray = props.last_six_months_reports.map(report => {
+    return { totalScores: report.key_traits.map(traits => {
+      return traits.skill_groups.map(skill_group => {
+        return (skill_group.score)/traits.skill_groups.length
+      }).reduce((p, c) => p + c)
+    }).reduce((p, c) => p + c)/report.key_traits.length,
+      scoresMonth: monthNames[new Date(report.created_at).getMonth()]
+    }
+  });
+  // console.log(keyTraitsScoresArray, 'user keyTraitsScoresArray first big one')
+
+// If it exists, to avoid errors, aggregates same months
+// the scores based on how many were the same (month)
+// https://stackoverflow.com/questions/24444738/sum-similar-keys-in-an-array-of-objects
+  if (keyTraitsScoresArray) {
+    const reducedArray = Array.from(keyTraitsScoresArray.reduce((acc, {totalScores, ...r}) => {
+      const key = JSON.stringify(r);
+      const current = acc.get(key) || { ...r, totalScores: 0 };
+      return acc.set(key, { ...current, totalScores: current.totalScores + totalScores });
+    }, new Map).values()).reverse();
+    // console.log(reducedArray, 'user reducedArray, aggregated months one')
+    // Makes an object with the month as keys and the value as the number of times we have that month
+    const counts = {};
+    keyTraitsScoresArray.forEach(function (x) {
+      counts[x.scoresMonth] = (counts[x.scoresMonth] || 0) + 1;
+    });
+    // console.log(counts, 'user counts, the number of times the month repeats')
+
+    // Divides the totalscores by the months counter and returns a set of
+    // objects with averagedScore and month as keys
+    let finalAveragedMonths = new Set
+    let countsKeys = Object.keys(counts)
+
+    reducedArray.forEach(obj => {
+      if (obj.scoresMonth == countsKeys.find(month => month == obj.scoresMonth)) {
+        finalAveragedMonths.add(
+          { averagedScore: (obj.totalScores / counts[obj.scoresMonth]),
+            month: obj.scoresMonth
+          })
+      }
+    })
+    // console.log(finalAveragedMonths, 'user finalAverageMonths, the final set')
+
+    // Creates a new array with the values only in the same order as the labels
+    const finalAverageMonthsArr = Array.from(finalAveragedMonths)
+    // console.log(finalAverageMonthsArr, 'user new array from the Set')
+    const dataValues = []
+    finalAverageMonthsArr.forEach(obj => {
+      if (obj.month == labels.find(m => obj.month == m)) {
+        dataValues.push(obj.averagedScore)
+        }
+    })
+    // console.log(dataValues, 'user final data values for chart')
+    // Avoids infite loop due to re render
+    useEffect(() => {
+      setUserLastData(dataValues);
+    }, []);
+  }
+  // -------------------- END USER DATA
+
+  // -------------------- COMPANY DATA
+  // console.log(props.all_reports, 'props.all reports companys total last 6 months')
+  // I need the average of everything for the last 6 months for the company
+  const companyKeyTraitsScoresArray = props.all_reports.map(report => {
+    return {
+      totalScores: report.key_traits.map(traits => {
+        return traits.skill_groups.map(skill_group => {
+          return (skill_group.score) / traits.skill_groups.length
+        }).reduce((p, c) => p + c)
+      }).reduce((p, c) => p + c) / report.key_traits.length,
+      scoresMonth: monthNames[new Date(report.created_at).getMonth()]
+    }
+  });
+  // console.log(companyKeyTraitsScoresArray, "companys big first list")
+
+  if (companyKeyTraitsScoresArray) {
+    const reducedCompanyArray = Array.from(companyKeyTraitsScoresArray.reduce((acc, { totalScores, ...r }) => {
+      const key = JSON.stringify(r);
+      const current = acc.get(key) || { ...r, totalScores: 0 };
+      return acc.set(key, { ...current, totalScores: current.totalScores + totalScores });
+    }, new Map).values()).reverse();
+    // console.log(reducedCompanyArray, 'company reducedCompanyArray, aggregated one months')
+    // makes an object with the month as keys and the value as the number of times we have that month
+    const counts = {};
+    companyKeyTraitsScoresArray.forEach(function (x) {
+      counts[x.scoresMonth] = (counts[x.scoresMonth] || 0) + 1;
+    });
+    // console.log(counts, 'company counts, the number of times the month repeats')
+
+    // Divides the totalscores by the months counter and returns a set of
+    // objects with averagedScore and month as keys
+    let finalAveragedMonths = new Set
+    let countsKeys = Object.keys(counts)
+
+    reducedCompanyArray.forEach(obj => {
+      if (obj.scoresMonth == countsKeys.find(month => month == obj.scoresMonth)) {
+        finalAveragedMonths.add(
+          {
+            averagedScore: (obj.totalScores / counts[obj.scoresMonth]),
+            month: obj.scoresMonth
+          })
+      }
+    })
+    // console.log(finalAveragedMonths, 'company finalAverageMonths, the final set')
+
+    // Creates a new array with the values only in the same order as the labels
+    const finalAverageMonthsArr = Array.from(finalAveragedMonths)
+    // console.log(finalAverageMonthsArr, 'company new array from the Set')
+    const companyDataValues = []
+    finalAverageMonthsArr.forEach(obj => {
+      if (obj.month == labels.find(m => obj.month == m)) {
+        companyDataValues.push(obj.averagedScore)
+      }
+    })
+    // console.log(companyDataValues, 'last company data, actual values')
+    // Avoids infite loop due to re render
+    useEffect(() => {
+      setCompanyLastData(companyDataValues);
+    }, []);
+  }
+  // -------------------- END COMPANY DATA
+
+  const options = {
+    responsive: true,
+    scales: {
+      y: {
+        ticks: {
+          precision: 0
+        }
       }
     }
-  }
-};
+  };
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      type: 'line',
-      label: 'Your Rating',
-      borderColor: 'rgb(255, 99, 132)',
-      borderWidth: 2,
-      fill: false,
-      data: [5, 4, 3, 5, 1, 2], // needs to be actual data
-    },
-    {
-      type: 'bar',
-      label: 'Company Average',
-      backgroundColor: 'rgb(75, 192, 192)',
-      data: [4, 5, 3, 2, 3, 4], // needs to be actual data
-      borderColor: 'white',
-      borderWidth: 2,
-    },
-  ],
-};
+  const data = {
+    labels,
+    datasets: [
+      {
+        type: 'line',
+        label: 'Your Rating',
+        borderColor: 'rgb(255, 99, 132)',
+        borderWidth: 2,
+        fill: false,
+        data: userLastData
+      },
+      {
+        type: 'bar',
+        label: 'Company Average',
+        backgroundColor: 'rgb(75, 192, 192)',
+        data: CompanyLastData,
+        borderColor: 'white',
+        borderWidth: 2,
+      },
+    ],
+  };
 
-const BarLineChart = props => {
   return (
     <div className="bar-line-chart-container">
       <Chart type='bar' options={options} data={data} />
-      {/* rating 1-5
-      bars are company average
-      you are the line
-      45% the total height, 50% to width */}
     </div>
   )
 };
-
 export default BarLineChart;
-
-// console.log(props.latest_reports)
-// need to target the right data, might have to change the order, need to this.props
-// before passing the data to the chart
