@@ -21,7 +21,7 @@ const Dashboard = props => {
       .catch(err => console.log(err))
   }, [])
 
-  // console.log(reportData)
+  console.log(reportData)
 
   return(
     reportData.length === 0 ?
